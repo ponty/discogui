@@ -17,11 +17,11 @@ class Test(TestCase):
         self.screen.stop()
         
         
-    def test_empty(self):
-        self.p = EasyProcess('zenity --warning').start()
-        # wnd is not ready
-        #time.sleep(0.2)
-        self.assertRaises(EmptyScreenException, discover_buttons)
+#    def test_empty(self):
+#        self.p = EasyProcess('zenity --warning').start()
+#        # wnd is not ready
+#        #time.sleep(0.2)
+#        self.assertRaises(EmptyScreenException, discover_buttons)
         
     def test_zenity(self):
         self.p = EasyProcess('zenity --warning').start()
