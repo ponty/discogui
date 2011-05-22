@@ -1,4 +1,7 @@
-``discogui`` discovers GUI elements
+**discogui**
+
+:Date: |today|
+:PDF: `discogui.pdf <discogui.pdf>`_
 
 Contents:
 
@@ -9,7 +12,7 @@ Contents:
     usage
     api
     related
-    changes
+    dev
 
 Indices and tables
 ==================
