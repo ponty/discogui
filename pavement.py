@@ -54,6 +54,7 @@ install_requires = [
     'PyScreenshot',
     'easyprocess',
     'PIL',
+    'pyvirtualdisplay',
     ]
 
 # compatible with distutils of python 2.3+ or later
