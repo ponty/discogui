@@ -1,5 +1,11 @@
 ``discogui`` discovers GUI elements
 
+Links:
+ * home: https://github.com/ponty/discogui
+ * documentation: http://ponty.github.com/discogui
+
+
+Features:
  * python module
  * works on Linux
  * does not depend on Accessibility technologies
@@ -8,9 +14,8 @@
  * GUI should be displayed on Xvfb or Xephyr
  * slow
  
-home: https://github.com/ponty/discogui
-
-documentation: http://ponty.github.com/discogui
+Known problems:
+ - Python 3 is not supported
 
 Possible applications:
  * GUI unit-testing
