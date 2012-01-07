@@ -8,10 +8,11 @@ from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
 
 def main():
-    buttons = Display().wrap(
-                    EasyProcess('zenity --question').wrap(
-                                          discover_buttons, delay=1))
-    print buttons()
+    with Display():
+        with EasyProcess('zenity --question') as p:   
+            p.sleep(1)         
+            buttons = discover_buttons()
+    print buttons
     
 
 if __name__ == '__main__':

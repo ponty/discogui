@@ -7,24 +7,14 @@ import time
 
 
 def main():
-    screen = Display()
-    screen.start()
+    with Display():
+        with EasyProcess('gcalctool'):
+            # wait for displaying the window
+            time.sleep(1)
+            focus_wnd()
+            send_key_list(['2', '*', '2', '=', '\n'])
+            img = autocrop(grab())
     
-    gcalctool = EasyProcess('gcalctool').start()
-    
-    # wait for displaying the window
-    time.sleep(0.2)
-    
-    focus_wnd()
-    
-    send_key_list(['2', '*', '2', '=', '\n'])
-    
-    img = autocrop(grab())
-    
-    gcalctool.stop()
-    screen.stop()
-    
-    # after stopping screen!
     img.show()
 
 if __name__=='__main__':

@@ -10,18 +10,16 @@ from discogui.imgutil import autocrop
 from easyprocess import EasyProcess
 from pyscreenshot import grab
 from pyvirtualdisplay import Display
+import time
 
 def main():
-    screen = Display(size=(640,480)).start()
-    gnumeric= EasyProcess('gnumeric').start().sleep(2)
-    
-    img = grab()
-    rectangles = active_rectangles()
-    print rectangles
-    
-    gnumeric.stop()
-    screen.stop()
-    
+    with Display(size=(640,480)):
+        with EasyProcess('gnumeric'):
+            time.sleep(2)
+            img = grab()
+            rectangles = active_rectangles()
+            print rectangles
+        
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)
     

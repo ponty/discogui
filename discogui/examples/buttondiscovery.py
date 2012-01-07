@@ -12,16 +12,14 @@ from discogui.imgutil import autocrop
 from pyvirtualdisplay import Display
 
 def main():
-    screen = Display().start()
-    zenity= EasyProcess('zenity --question').start().sleep(1)
+    with Display():
+        with EasyProcess('zenity --question') as p:
+            p.sleep(1)
     
-    img = grab()
-    rectangles = discover_buttons()
-    print rectangles
-    
-    zenity.stop()
-    screen.stop()
-    
+            img = grab()
+            rectangles = discover_buttons()
+            print rectangles
+        
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)
     

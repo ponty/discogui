@@ -8,18 +8,19 @@ from discogui.buttons import discover_buttons
 from discogui.mouse import PyMouse
 from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
+import time
 
 def click_button_get_return_code(which_button):
-    zenity = EasyProcess('zenity --question').start().sleep(1)
-    rectangles = discover_buttons()
-    PyMouse().click(*rectangles[which_button].center)
-    return zenity.wait().return_code
+    with EasyProcess('zenity --question') as p:
+        time.sleep(1)
+        rectangles = discover_buttons()
+        PyMouse().click(*rectangles[which_button].center)
+        return p.wait().return_code
 
 def main():
-    screen = Display().start()
-    print click_button_get_return_code(0)
-    print click_button_get_return_code(1)
-    screen.stop()
+    with Display():
+        print click_button_get_return_code(0)
+        print click_button_get_return_code(1)
 
 if __name__=='__main__':
     main()
