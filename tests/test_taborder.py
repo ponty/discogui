@@ -21,11 +21,11 @@ class Test(TestCase):
         # wnd is not ready
     #    self.assertRaises(EmptyScreenException, tab_rectangles)
 
-    def test_zenity(self):
-        self.p = EasyProcess('zenity --warning').start()
-        time.sleep(0.2)
-        ls = tab_rectangles()
-        self.assertEquals(len(ls), 2)
+#    def test_zenity(self):
+#        self.p = EasyProcess('zenity --warning').start()
+#        time.sleep(0.2)
+#        ls = tab_rectangles()
+#        self.assertEquals(len(ls), 2)
         
     def test_notab(self):
         self.p = EasyProcess('xmessage hi').start()

@@ -19,23 +19,24 @@ class Test(TestCase):
         self.screen.stop()
         
     def test_zenity(self):
+        SLEEP_TIME=2
         self.p = EasyProcess('zenity --warning').start()
-        time.sleep(0.2)
+        time.sleep(SLEEP_TIME)
         send_key('\n')
         self.assertFalse(getbbox(grab()))
 
         self.p = EasyProcess('zenity --warning').start()
-        time.sleep(0.2)
+        time.sleep(SLEEP_TIME)
         send_key_list(['\n'])
         self.assertFalse(getbbox(grab()))
 
         self.p = EasyProcess('zenity --warning').start()
-        time.sleep(0.2)
+        time.sleep(SLEEP_TIME)
         send_key(' ')
         self.assertFalse(getbbox(grab()))
         
         self.p = EasyProcess('zenity --warning').start()
-        time.sleep(0.2)
+        time.sleep(SLEEP_TIME)
         send_key('x')
         self.assertTrue(getbbox(grab()))
 
