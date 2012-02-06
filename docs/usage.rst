@@ -24,6 +24,7 @@ button discovery on zenity
 .. program-screenshot:: python -m discogui.examples.buttondiscovery
     :prompt:
     :stdout:
+    :timeout: 200
 
 button discovery on gnumeric
 ----------------------------
@@ -36,7 +37,7 @@ button discovery on gnumeric
 .. program-screenshot:: python -m discogui.examples.hovergnumeric
     :prompt:
     :stdout:
-    :timeout: 200
+    :timeout: 500
 
 button test
 ---------------------

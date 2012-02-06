@@ -46,18 +46,18 @@ General
  * install scrot
  * install PIL_
  * install xdotool
- * install setuptools_
+ * install pip_
  * install latest PyMouse and the program::
 
     # as root
-    easy_install https://github.com/pepijndevos/PyMouse/zipball/master
-    easy_install discogui
+    pip install https://github.com/pepijndevos/PyMouse/zipball/master
+    pip install discogui
 
 Ubuntu
 ----------
 ::
 
-    sudo apt-get install python-setuptools
+    sudo apt-get install python-pip
     sudo apt-get install xvfb
     sudo apt-get install xserver-xephyr
     sudo apt-get install python-xlib
@@ -66,9 +66,9 @@ Ubuntu
     sudo apt-get install xdotool
 
     # PyPI version of PyMouse is too old, this is the latest
-    sudo easy_install https://github.com/pepijndevos/PyMouse/zipball/master
+    sudo pip install https://github.com/pepijndevos/PyMouse/zipball/master
 
-    sudo easy_install discogui
+    sudo pip install discogui
 
 Uninstall
 ----------
