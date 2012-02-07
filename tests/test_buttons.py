@@ -1,12 +1,13 @@
 from discogui.buttons import discover_buttons
-from discogui.imgutil import EmptyScreenException
 from easyprocess import EasyProcess
-from pyvirtualdisplay import Display
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 from unittest import TestCase
 
 
 class Test(TestCase):
+    def wait(self):
+        self.screen.waitgrab()
+        
     def setUp(self):
         self.screen = SmartDisplay()
         self.screen.start()
@@ -25,20 +26,20 @@ class Test(TestCase):
         
     def test_zenity(self):
         self.p = EasyProcess('zenity --warning').start()
-        self.screen.waitgrab()
+        self.wait()
         ls = discover_buttons()
         self.assertEquals(len(ls), 1)
         
     def test_notab(self):
         self.p = EasyProcess('xmessage -buttons x,y,z hi').start()
-        self.screen.waitgrab()
+        self.wait()
         ls = discover_buttons(grid=10)
         self.assertEquals(len(ls), 3)
         
         
     def test_gmessage(self):
         self.p = EasyProcess('gmessage -buttons x,y,z hi').start()
-        self.screen.waitgrab()
+        self.wait()
         ls = discover_buttons()
         self.assertEquals(len(ls), 3)
 

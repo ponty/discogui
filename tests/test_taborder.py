@@ -1,14 +1,16 @@
 from discogui.imgutil import EmptyScreenException
 from discogui.taborder import tab_rectangles
 from easyprocess import EasyProcess
-from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 from unittest import TestCase
-import time
 
 
 class Test(TestCase):
+    def wait(self):
+        self.screen.waitgrab()
+        
     def setUp(self):
-        self.screen = Display()
+        self.screen = SmartDisplay()
         self.screen.start()
         self.p = None
         
@@ -23,20 +25,20 @@ class Test(TestCase):
 
 #    def test_zenity(self):
 #        self.p = EasyProcess('zenity --warning').start()
-#        time.sleep(0.2)
+#        self.wait()
 #        ls = tab_rectangles()
 #        self.assertEquals(len(ls), 2)
         
     def test_notab(self):
         self.p = EasyProcess('xmessage hi').start()
-        time.sleep(0.2)
+        self.wait()
         ls = tab_rectangles()
         self.assertEquals(len(ls), 0)
         
         
     def test_gmessage(self):
         self.p = EasyProcess('gmessage -buttons x,y,z hi').start()
-        time.sleep(0.2)
+        self.wait()
         ls = tab_rectangles()
         self.assertEquals(len(ls), 4)
 

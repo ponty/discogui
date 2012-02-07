@@ -10,7 +10,7 @@ from pyvirtualdisplay import Display
 def main():
     with Display():
         with EasyProcess('zenity --question') as p:   
-            p.sleep(1)         
+            p.sleep(10)         
             buttons = discover_buttons()
     print buttons
     
