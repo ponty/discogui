@@ -14,8 +14,8 @@ def main():
             focus_wnd()
             send_key_list(['2', '*', '2', '=', '\n'])
             img = autocrop(grab())
-    
+
     img.show()
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

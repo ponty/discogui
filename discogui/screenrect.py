@@ -7,15 +7,16 @@ changes:
 - new methods starting at __getitem__
 '''
 
+
 class ScreenRect(object):
     """
     The ScreenRect class is used for storing and manipulating rectangular areas.
 
     It has left, top, width and height attributes, which are automatically
-    changed by assignment to the right, bottom, bottomleft, bottomright, topleft, 
+    changed by assignment to the right, bottom, bottomleft, bottomright, topleft,
     topright or center properties.
 
-    Rects can be added to greater a greater containing rectangle, or a 
+    Rects can be added to greater a greater containing rectangle, or a
     Rect.union classmethod is available to sum a list of Rect objects.
 
     The collidepoint and intersects methods are used for collision testing.
@@ -35,7 +36,7 @@ class ScreenRect(object):
     def __init__(self, *args, **kwargs):
         """
         xywh must be a 2 or 4 tuple or a rect instance.
-        
+
         (left, top, width, height) or (width, height)
         """
         from_size = kwargs.get('from_size', False)
@@ -51,13 +52,15 @@ class ScreenRect(object):
         else:
             if len(xywh) == 4:
                 if from_size:
-                    self.left, self.top, self.width, self.height = (int(i) for i in xywh)
+                    self.left, self.top, self.width, self.height = (
+                        int(i) for i in xywh)
                 else:
                     x = list(int(i) for i in xywh)
-                    self.left, self.top, self.width, self.height = (x[0], x[1], x[2] - x[0], x[3] - x[1])
+                    self.left, self.top, self.width, self.height = (
+                        x[0], x[1], x[2] - x[0], x[3] - x[1])
             elif len(xywh) == 2:
-                self.left, self.top, self.width, self.height = (0, 0) + tuple(int(i) for i in xywh)
-
+                self.left, self.top, self.width, self.height = (
+                    0, 0) + tuple(int(i) for i in xywh)
 
     def __repr__(self):
         return "%s((%s,%s,%s,%s))" % (self.__class__.__name__, self.left, self.top, self.right, self.bottom)
@@ -67,12 +70,14 @@ class ScreenRect(object):
 
     def set_bottom(self, s):
         self.top = s - self.height
+
     def get_bottom(self):
         return self.top + self.height
     bottom = property(get_bottom, set_bottom)
 
     def set_right(self, s):
         self.left = s - self.width
+
     def get_right(self):
         return self.left + self.width
     right = property(get_right, set_right)
@@ -80,6 +85,7 @@ class ScreenRect(object):
     def set_center(self, xy):
         self.left = xy[0] - (self.width * 0.5)
         self.top = xy[1] - (self.height * 0.5)
+
     def get_center(self):
         return self.left + (self.width * 0.5), self.top + (self.height * 0.5)
     center = property(get_center, set_center)
@@ -87,6 +93,7 @@ class ScreenRect(object):
     def set_bottomleft(self, xy):
         self.left = xy[0]
         self.bottom = xy[1]
+
     def get_bottomleft(self):
         return self.left, self.bottom
     bottomleft = property(get_bottomleft, set_bottomleft)
@@ -94,6 +101,7 @@ class ScreenRect(object):
     def set_bottomright(self, xy):
         self.right = xy[0]
         self.bottom = xy[1]
+
     def get_bottomright(self):
         return self.right, self.bottom
     bottomright = property(get_bottomright, set_bottomright)
@@ -101,6 +109,7 @@ class ScreenRect(object):
     def set_topright(self, xy):
         self.right = xy[0]
         self.top = xy[1]
+
     def get_topright(self):
         return self.right, self.top
     topright = property(get_topright, set_topright)
@@ -108,6 +117,7 @@ class ScreenRect(object):
     def set_topleft(self, xy):
         self.left = xy[0]
         self.top = xy[1]
+
     def get_topleft(self):
         return self.left, self.top
     topleft = property(get_topleft, set_topleft)
@@ -138,10 +148,14 @@ class ScreenRect(object):
         right = left + width
         bottom = top + height
         for other in others:
-            if other.left < left: left = other.left
-            if other.top < top: top = other.top
-            if other.right > right: right = other.right
-            if other.bottom > bottom: bottom = other.bottom
+            if other.left < left:
+                left = other.left
+            if other.top < top:
+                top = other.top
+            if other.right > right:
+                right = other.right
+            if other.bottom > bottom:
+                bottom = other.bottom
         return cls((left, top, right - left, bottom - top))
 
     def collidepoint(self, xy):
@@ -155,11 +169,15 @@ class ScreenRect(object):
         """
         Test if a rect intersects with this rect.
         """
-        if self.left > other.left + other.width: return False
-        if self.top > other.top + other.height: return False
-        if self.left + self.width < other.left: return False
-        if self.top + self.height < other.top: return False
-        return True 
+        if self.left > other.left + other.width:
+            return False
+        if self.top > other.top + other.height:
+            return False
+        if self.left + self.width < other.left:
+            return False
+        if self.top + self.height < other.top:
+            return False
+        return True
 
     def get_area(self):
         return self.width * self.height
@@ -174,7 +192,8 @@ class ScreenRect(object):
         top = max((self.top, other.top))
         right = min((self.left + self.width, other.left + other.width))
         bottom = min((self.top + self.height, other.top + other.height))
-        if left > right or bottom < top: return None
+        if left > right or bottom < top:
+            return None
         return ScreenRect((left, top, right - left, bottom - top))
 
     def contains(self, other):
@@ -206,16 +225,16 @@ class ScreenRect(object):
 
     def __len__(self):
         return 4
-    
+
     def move(self, vector):
         self.left += vector[0]
         self.top += vector[1]
-    
+
     def __eq__(self, other):
         x = (self.left, self.top, self.right, self.bottom)
-        y = (other.left, other.top, other.right, other.bottom)        
+        y = (other.left, other.top, other.right, other.bottom)
         return all(a == b for a, b in zip(x, y))
-    
+
     def point_inside(self, point):
         """
         Return True if self contains point
@@ -235,11 +254,3 @@ class ScreenRect(object):
         new.width += 2 * border
         new.height += 2 * border
         return new
-
-    
-    
-    
-    
-    
-    
-    

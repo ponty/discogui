@@ -11,20 +11,21 @@ from discogui.draw import draw_indexed_rect_list
 from discogui.imgutil import autocrop
 from pyvirtualdisplay import Display
 
+
 def main():
     with Display():
         with EasyProcess('zenity --question') as p:
             p.sleep(1)
-    
+
             img = grab()
             rectangles = discover_buttons()
             print rectangles
-        
+
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)
-    
+
     # display results
     img.show()
 
-if __name__=='__main__':
-    main()    
+if __name__ == '__main__':
+    main()

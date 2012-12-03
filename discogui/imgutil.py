@@ -3,14 +3,15 @@ from discogui.mouse import PyMouse
 from discogui.screenrect import ScreenRect
 import pyscreenshot
 
+
 def getbbox(img, outside=False):
     '''
     Get bounding box.
     PIL getbbox() is not symmetrical on left/right.
-    
+
     outside=0 -> box contains edges
     outside=1 -> box does not contain edges
-    
+
     :param img: PIL image
     :param outside: bool
     :rtype: ScreenRect
@@ -26,14 +27,17 @@ def getbbox(img, outside=False):
             bbox.bottom += 1
         return bbox
 
+
 def autocrop(img, outside=False):
     box = getbbox(img, outside=outside)
     if box:
         img = img.crop(box)
     return img
-        
+
+
 class EmptyScreenException(Exception):
     pass
+
 
 def focus_wnd():
     '''
@@ -52,5 +56,3 @@ def focus_wnd():
     img_orig = pyscreenshot.grab()
     imglog.img_log(img_orig, 'img_orig')
     return img_orig
-    
-    

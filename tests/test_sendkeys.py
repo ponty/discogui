@@ -7,20 +7,19 @@ from unittest import TestCase
 import time
 
 
-
 class Test(TestCase):
     def wait(self):
         self.screen.waitgrab()
-        
+
     def setUp(self):
         self.screen = SmartDisplay()
         self.screen.start()
         self.p = None
-        
+
     def tearDown(self):
         self.p.stop()
         self.screen.stop()
-        
+
     def test_zenity(self):
         self.p = EasyProcess('zenity --warning').start()
         self.wait()
@@ -36,7 +35,7 @@ class Test(TestCase):
         self.wait()
         send_key(' ')
         self.assertFalse(getbbox(grab()))
-        
+
         self.p = EasyProcess('zenity --warning').start()
         self.wait()
         send_key('x')
@@ -62,4 +61,3 @@ class Test(TestCase):
         time.sleep(1)
 #        img_debug(grab(), 'q')
         self.assertFalse(getbbox(grab()))
-

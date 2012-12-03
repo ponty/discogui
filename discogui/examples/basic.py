@@ -7,13 +7,14 @@ from discogui.buttons import discover_buttons
 from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
 
+
 def main():
     with Display():
-        with EasyProcess('zenity --question') as p:   
-            p.sleep(10)         
+        with EasyProcess('zenity --question') as p:
+            p.sleep(10)
             buttons = discover_buttons()
     print buttons
-    
+
 
 if __name__ == '__main__':
     main()

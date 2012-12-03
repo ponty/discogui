@@ -10,10 +10,12 @@ img_dir = None
 img_ind = 0
 CROP_RECT = None
 
+
 def set_crop_rect(rct):
     global CROP_RECT
     CROP_RECT = rct
-    
+
+
 def img_log(im, text):
     '''
     save the image in a temp folder for debugging.
@@ -33,6 +35,7 @@ def img_log(im, text):
     im.save(fname)
     log.debug('image was saved:' + fname)
     img_ind += 1
+
 
 def img_log_rects(img, rcts, text):
     '''

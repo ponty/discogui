@@ -21,11 +21,11 @@ import pyscreenshot
 
 log = logging.getLogger(__name__)
 
-   
+
 def darker(im1, im2, box):
     '''
-    im1 is darker than im2 in box -> 0 
-    im2 is darker than im1 in box -> 1 
+    im1 is darker than im2 in box -> 0
+    im2 is darker than im1 in box -> 1
     '''
     # add border, because box is an 'inside box', crop needs 'outside box'
     box = box.add_border(1)
@@ -41,13 +41,13 @@ def darker(im1, im2, box):
 def tab_rectangles():
     '''
     Return rectangles found by sending TAB button events.
-    
+
     Does not work if other parts of screen are changing (e.g. blinking cursor)
 
     :rtype: rectangles list
     '''
     ls = []
-    
+
     img_orig = focus_wnd()
 
     im1 = img_orig
@@ -58,7 +58,7 @@ def tab_rectangles():
 
         img_log(im1, 'im1')
         img_log(im2, 'im2')
-        
+
         boxes = tab_rect_pair(im1, im2)
         if not boxes:
             return []
@@ -69,29 +69,29 @@ def tab_rectangles():
                 break
             ls += [boxes[1]]
         else:
-            #first
+            # first
             ls += boxes
         im1 = im2
-        
+
     img_log_rects(img_orig, ls, 'img_orig')
     return ls
+
 
 def tab_rect_pair(img_orig, im_next):
     '''
     '''
     img_diff = ImageChops.difference(img_orig, im_next)
     img_log(img_diff, 'img_diff')
-    
+
     # can be dotted -> filter + enhance color
     img_diff_filtered = img_diff.filter(ImageFilter.MaxFilter(5))
-    img_diff_filtered = img_diff_filtered.point(lambda x: 255 * bool(x)) 
+    img_diff_filtered = img_diff_filtered.point(lambda x: 255 * bool(x))
     img_log(img_diff_filtered, 'img_diff_filtered')
 
     bbox = getbbox(img_diff)
     if not bbox:
         return None
 
-    
     def check_edges(horiz):
         if horiz:
             r1 = bbox.left
@@ -109,13 +109,13 @@ def tab_rect_pair(img_orig, im_next):
                 p2 = (bbox.right, c)
             color1 = sum(img_diff_filtered.getpixel(p1))
             color2 = sum(img_diff_filtered.getpixel(p2))
-            ls += [int(bool(color1 + color2))] 
-        
+            ls += [int(bool(color1 + color2))]
+
         if not 0 in ls:
             log.debug('split pos not found')
             return
         i = ls.index(0)
-        if i == 0: 
+        if i == 0:
             ls.reverse()
             i = ls.index(0)
             i = len(ls) - i - 1
@@ -129,10 +129,10 @@ def tab_rect_pair(img_orig, im_next):
             rsegment2 = ScreenRect(0, pos, img_orig.size[0], img_orig.size[1])
         box1 = getbbox(img_diff.crop(rsegment1))
         box1.move(rsegment1.topleft)
-        
+
         box2 = getbbox(img_diff.crop(rsegment2))
         box2.move(rsegment2.topleft)
-                
+
         return   box1, box2
     r = check_edges(0)
     if r is None:
