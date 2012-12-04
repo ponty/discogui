@@ -2,6 +2,5 @@ path.py
 PyMouse
 PyScreenshot
 easyprocess
-PIL
 pyvirtualdisplay
 
