@@ -12,9 +12,9 @@ from discogui.imglog import img_log, img_log_rects
 from discogui.imgutil import getbbox, focus_wnd
 from discogui.screenrect import ScreenRect
 from discogui.sendkeys import send_key
-import ImageChops
-import ImageFilter
-import ImageStat
+from PIL import ImageChops
+from PIL import ImageFilter
+from PIL import ImageStat
 import logging
 import pyscreenshot
 
