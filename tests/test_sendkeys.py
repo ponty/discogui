@@ -6,13 +6,15 @@ from pyvirtualdisplay.smartdisplay import SmartDisplay
 from unittest import TestCase
 import time
 
+VISIBLE = 0
+
 
 class Test(TestCase):
     def wait(self):
         self.screen.waitgrab()
 
     def setUp(self):
-        self.screen = SmartDisplay()
+        self.screen = SmartDisplay(visible=VISIBLE)
         self.screen.start()
         self.p = None
 
@@ -50,14 +52,14 @@ class Test(TestCase):
 #        img_debug(grab(), 'ctrl+q')
         self.assertFalse(getbbox(grab()))
 
-    def test_gcalctool2(self):
-        self.p = EasyProcess('gcalctool').start()
-        self.wait()
-        focus_wnd()
-        send_key('alt+c')
-#        img_debug(grab(), 'altc')
-        time.sleep(1)
-        send_key('q')
-        time.sleep(1)
-#        img_debug(grab(), 'q')
-        self.assertFalse(getbbox(grab()))
+#    def test_gcalctool2(self):
+#        self.p = EasyProcess('gcalctool').start()
+#        self.wait()
+#        focus_wnd()
+#        send_key('alt+c')
+# #        img_debug(grab(), 'altc')
+#        time.sleep(1)
+#        send_key('q')
+#        time.sleep(1)
+# #        img_debug(grab(), 'q')
+#        self.assertFalse(getbbox(grab()))
