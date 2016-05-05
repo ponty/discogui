@@ -44,7 +44,7 @@ class Test(TestCase):
         self.assertTrue(getbbox(grab()))
 
     def test_gcalctool1(self):
-        self.p = EasyProcess('gcalctool').start()
+        self.p = EasyProcess('gnome-calculator').start()
         self.wait()
         focus_wnd()
         send_key('ctrl+q')
