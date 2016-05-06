@@ -5,7 +5,7 @@ python:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y python-xlib scrot python-pil xdotool xvfb 
+  - sudo apt-get install -y python-xlib scrot python-imaging xdotool xvfb 
   - sudo apt-get install -y zenity gcalctool gxmessage x11-utils gnumeric
 
 install:
