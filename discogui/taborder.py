@@ -75,6 +75,7 @@ def tab_rectangles():
         im1 = im2
 
     img_log_rects(img_orig, ls, 'img_orig')
+    log.debug('rectangles found:%s', ls)
     return ls
 
 

@@ -42,4 +42,5 @@ def discover_buttons(grid=30):
             ls += [x]
 
     img_log_rects(img_orig, ls, 'img_orig')
+    log.debug('buttons found:%s', ls)
     return ls
