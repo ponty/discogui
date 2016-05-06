@@ -2,8 +2,10 @@
 
 Links:
  * home: https://github.com/ponty/discogui
- * documentation: http://ponty.github.com/discogui
+ * documentation: http://discogui.readthedocs.org
+ * PYPI: https://pypi.python.org/pypi/discogui
 
+|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Downloads| |Code Health| |Documentation|
 
 Features:
  * python module
@@ -22,7 +24,7 @@ Possible applications:
  * automatic GUI control
 
 Basic usage
-============
+===========
 ::
 
     from discogui.buttons import discover_buttons
@@ -39,7 +41,7 @@ Installation
 ============
 
 General
---------
+-------
 
  * install Xvfb_ and Xephyr_
  * install Xlib
@@ -53,25 +55,16 @@ General
     pip install https://github.com/pepijndevos/PyMouse/zipball/master
     pip install discogui
 
-Ubuntu
-----------
+Ubuntu 14.04
+------------
 ::
 
-    sudo apt-get install python-pip
-    sudo apt-get install xvfb
-    sudo apt-get install xserver-xephyr
-    sudo apt-get install python-xlib
-    sudo apt-get install scrot
-    sudo apt-get install python-imaging
-    sudo apt-get install xdotool
-
-    # PyPI version of PyMouse is too old, this is the latest
+    sudo apt-get install python-pip xvfb python-xlib scrot python-pil xdotool
     sudo pip install https://github.com/pepijndevos/PyMouse/zipball/master
-
     sudo pip install discogui
 
 Uninstall
-----------
+---------
 ::
 
     # as root
@@ -84,6 +77,23 @@ Uninstall
 .. _Xephyr: http://en.wikipedia.org/wiki/Xephyr
 .. _PIL: http://www.pythonware.com/library/pil/
 
+
+.. |Travis| image:: http://img.shields.io/travis/ponty/discogui.svg
+   :target: https://travis-ci.org/ponty/discogui/
+.. |Coveralls| image:: http://img.shields.io/coveralls/ponty/discogui/master.svg
+   :target: https://coveralls.io/r/ponty/discogui/
+.. |Latest Version| image:: https://img.shields.io/pypi/v/discogui.svg
+   :target: https://pypi.python.org/pypi/discogui/
+.. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/discogui.svg
+   :target: https://pypi.python.org/pypi/discogui/
+.. |License| image:: https://img.shields.io/pypi/l/discogui.svg
+   :target: https://pypi.python.org/pypi/discogui/
+.. |Downloads| image:: https://img.shields.io/pypi/dm/discogui.svg
+   :target: https://pypi.python.org/pypi/discogui/
+.. |Code Health| image:: https://landscape.io/github/ponty/discogui/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/ponty/discogui/master
+.. |Documentation| image:: https://readthedocs.org/projects/discogui/badge/?version=latest
+   :target: https://readthedocs.org/projects/discogui/?badge=latest
 
 
 
