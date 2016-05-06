@@ -63,11 +63,12 @@ def tab_rectangles():
         if not boxes:
             return []
         if len(ls):
-            # TODO: implement almost_equal()
-            assert boxes[0] == ls[-1]
-            if boxes[1] in ls:
+            if len(boxes) == 2:
+                # TODO: implement almost_equal()
+                assert boxes[0] == ls[-1]
+            if boxes[-1] in ls:
                 break
-            ls += [boxes[1]]
+            ls += [boxes[-1]]
         else:
             # first
             ls += boxes
@@ -137,6 +138,9 @@ def tab_rect_pair(img_orig, im_next):
     r = check_edges(0)
     if r is None:
         r = check_edges(1)
+    if r is None:
+        # in new styles the textbox is not changing
+        return [bbox]
     box1, box2 = r
     d1 = darker(img_orig, im_next, box1)
     d2 = darker(img_orig, im_next, box2)
