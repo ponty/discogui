@@ -11,7 +11,8 @@ before_install:
 install:
  - pip install coveralls
  - pip install -r requirements-test.txt
- - pip install http://downloads.sourceforge.net/project/python-xlib/python-xlib/0.14/python-xlib-0.14.tar.gz
+ - pip install --upgrade https://github.com/pepijndevos/PyMouse/zipball/master
+ - pip install --upgrade http://downloads.sourceforge.net/project/python-xlib/python-xlib/0.14/python-xlib-0.14.tar.gz
  - pip install --upgrade .
  
 script:  
