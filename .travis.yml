@@ -1,0 +1,22 @@
+language: python
+python:
+ - "2.6"
+ - "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y python-xlib scrot python-pil xdotool xvfb 
+  - sudo apt-get install -y zenity gcalctool gxmessage x11-utils gnumeric
+
+install:
+ - pip install coveralls
+ - pip install -r requirements-test.txt
+ - pip install --upgrade .
+ 
+script:  
+ - xauth add :0 . `mcookie`
+ - cd tests 
+ - nosetests -v --with-coverage --cover-package=discogui .
+ 
+after_success:
+ - coveralls
