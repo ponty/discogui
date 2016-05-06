@@ -20,7 +20,7 @@ def main():
 #            time.sleep(2)
             img = disp.waitgrab(timeout=60)
             rectangles = active_rectangles()
-            print rectangles
+            print( rectangles )
 
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)

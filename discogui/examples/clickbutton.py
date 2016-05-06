@@ -21,8 +21,8 @@ def click_button_get_return_code(which_button):
 
 def main():
     with Display():
-        print click_button_get_return_code(0)
-        print click_button_get_return_code(1)
+        print( click_button_get_return_code(0) )
+        print( click_button_get_return_code(1) )
 
 if __name__ == '__main__':
     main()

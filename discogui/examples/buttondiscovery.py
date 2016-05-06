@@ -19,7 +19,7 @@ def main():
 
             img = grab()
             rectangles = discover_buttons()
-            print rectangles
+            print( rectangles )
 
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)
