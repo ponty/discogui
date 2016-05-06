@@ -15,7 +15,7 @@ from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 
 def main():
-    with SmartDisplay(size=(640, 480)) as disp:
+    with SmartDisplay(size=(640, 480), visible=0) as disp:
         with EasyProcess('gnumeric'):
 #            time.sleep(2)
             img = disp.waitgrab(timeout=60)
