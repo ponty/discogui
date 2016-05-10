@@ -1,23 +1,15 @@
-**discogui**
+========
+discogui
+========
 
-:Date: |today|
-:PDF: `discogui.pdf <discogui.pdf>`_
 
-Contents:
 
-.. toctree::
-    :maxdepth: 2
+About
+=====
 
-    readme
-    usage
-    api
-    related
-    dev
 
-Indices and tables
-==================
+.. include:: ../README.rst
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. include:: api.rst
+
 
