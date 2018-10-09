@@ -1,5 +1,5 @@
 from logging import DEBUG
-from path import path
+from path import Path
 from tempfile import mkdtemp, gettempdir
 from discogui.draw import draw_indexed_rect_list
 import logging
@@ -25,10 +25,10 @@ def img_log(im, text):
     global img_dir
     global img_ind
     if not img_dir:
-        root = path(gettempdir()) / 'img_log'
+        root = Path(gettempdir()) / 'img_log'
         if not root.exists():
             root.makedirs()
-        img_dir = path(mkdtemp(prefix='img_debug_', suffix='', dir=root))
+        img_dir = Path(mkdtemp(prefix='img_debug_', suffix='', dir=root))
     if CROP_RECT:
         im = im.crop(CROP_RECT)
     fname = str(img_dir / str(img_ind) + '_' + text + '.png')
