@@ -90,7 +90,7 @@ Vagrant.configure(2) do |config|
 
 
 # test dependencies
-  sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric
+  sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric imagemagick
   sudo pip install -r /vagrant/requirements-test.txt
   
 # doc dependencies

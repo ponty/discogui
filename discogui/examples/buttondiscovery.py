@@ -13,7 +13,7 @@ from pyvirtualdisplay import Display
 
 
 def main():
-    with Display():
+    with Display(visible=0):
         with EasyProcess('zenity --question') as p:
             p.sleep(1)
 

@@ -14,13 +14,13 @@ Features:
  * toolkit independent
  * only  basic tests on very simple GUI
  * GUI should be displayed on Xvfb or Xephyr
- * slow
  
 Known problems:
  - Python 3 is not supported
+ - slow
 
 Possible applications:
- * GUI unit-testing
+ * automatic GUI testing
  * automatic GUI control
 
 Basic usage
@@ -69,6 +69,185 @@ Uninstall
 
     # as root
     pip uninstall discogui
+
+Usage
+=====
+
+..  #-- from docs.screenshot import screenshot--#  
+..  #-#
+
+
+basic
+-----
+
+Code::
+      
+  #-- include('examples/basic.py')--#
+  '''
+  1. start zenity Yes/No dialog on Xvfb
+  2. discover buttons using :mod:`discogui.buttons` module
+  3. print rectangles
+  '''
+  from discogui.buttons import discover_buttons
+  from easyprocess import EasyProcess
+  from pyvirtualdisplay import Display
+
+
+  def main():
+      with Display(visible=0):
+          with EasyProcess('zenity --question') as p:
+              p.sleep(5)
+              buttons = discover_buttons()
+      print( buttons )
+
+
+  if __name__ == '__main__':
+      main()
+  #-#
+      
+    
+Output::
+
+  #-- sh('python -m discogui.examples.basic 2>/dev/null')--#
+  [ScreenRect((582,407,667,442)), ScreenRect((491,407,576,442))]
+  #-#
+
+
+button discovery on zenity
+--------------------------
+
+Code::
+      
+  #-- include('examples/buttondiscovery.py')--#
+  '''
+  1. start zenity Yes/No dialog on Xvfb
+  2. discover buttons using :mod:`discogui.buttons` module
+  3. print rectangles
+  4. draw red rectangles on screenshot
+  '''
+  from easyprocess import EasyProcess
+  from pyscreenshot import grab
+  from discogui.buttons import discover_buttons
+  from discogui.draw import draw_indexed_rect_list
+  from discogui.imgutil import autocrop
+  from pyvirtualdisplay import Display
+
+
+  def main():
+      with Display(visible=0):
+          with EasyProcess('zenity --question') as p:
+              p.sleep(1)
+
+              img = grab()
+              rectangles = discover_buttons()
+              print( rectangles )
+
+      img = draw_indexed_rect_list(img, rectangles)
+      img = autocrop(img)
+
+      # display results
+      img.show()
+
+  if __name__ == '__main__':
+      main()
+  #-#
+      
+Image:
+
+..  #-- screenshot('python -m discogui.examples.buttondiscovery','screenshot_buttondiscovery.png') --#
+.. image:: _img/screenshot_buttondiscovery.png
+..  #-#
+
+
+button discovery on gnumeric
+----------------------------
+
+Code::
+      
+  #-- include('examples/hovergnumeric.py')--#
+  '''
+  1. start gnumeric on Xvfb with low ersolution
+  2. discover buttons using :mod:`discogui.hover` module
+  3. print rectangles
+  4. draw red rectangles on screenshot
+  '''
+  from discogui.draw import draw_indexed_rect_list
+  from discogui.hover import active_rectangles
+  from discogui.imgutil import autocrop
+  from easyprocess import EasyProcess
+  # from pyscreenshot import grab
+  # from pyvirtualdisplay import Display
+  from pyvirtualdisplay.smartdisplay import SmartDisplay
+  # import time
+
+
+  def main():
+      with SmartDisplay(size=(640, 480), visible=0) as disp:
+          with EasyProcess('gnumeric'):
+  #            time.sleep(2)
+              img = disp.waitgrab(timeout=60)
+              rectangles = active_rectangles()
+              print( rectangles )
+
+      img = draw_indexed_rect_list(img, rectangles)
+      img = autocrop(img)
+
+      # display results
+      img.show()
+
+  if __name__ == '__main__':
+      main()
+  #-#
+      
+Image:
+
+..  #-- screenshot('python -m discogui.examples.hovergnumeric','screenshot_hovergnumeric.png') --#
+.. image:: _img/screenshot_hovergnumeric.png
+..  #-#
+
+button test
+-----------
+
+Code::
+      
+  #-- include('examples/clickbutton.py')--#
+  '''
+  1. start zenity Yes/No dialog on Xvfb
+  2. discover buttons using :mod:`discogui.buttons` module
+  3. click first button, print return code
+  4. click second button, print return code
+  '''
+  from discogui.buttons import discover_buttons
+  from discogui.mouse import PyMouse
+  from easyprocess import EasyProcess
+  from pyvirtualdisplay import Display
+  import time
+
+
+  def click_button_get_return_code(which_button):
+      with EasyProcess('zenity --question') as p:
+          time.sleep(1)
+          rectangles = discover_buttons()
+          PyMouse().click(*rectangles[which_button].center)
+          return p.wait().return_code
+
+
+  def main():
+      with Display():
+          print( click_button_get_return_code(0) )
+          print( click_button_get_return_code(1) )
+
+  if __name__ == '__main__':
+      main()
+  #-#
+
+
+Output::
+
+  #-- sh('python -m discogui.examples.clickbutton 2>/dev/null')--#
+  0
+  1
+  #-#
 
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall

@@ -19,7 +19,7 @@ pip-log.txt
 */_build/latex/*
 
 *.class
-*.png
+#*.png
 .version
 nosetests.xml
 
@@ -33,3 +33,5 @@ nosetests.xml
 
 sloccount.sc
 *.prefs
+
+docs/api/*.rst
