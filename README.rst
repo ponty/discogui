@@ -5,7 +5,7 @@ Links:
  * documentation: http://discogui.readthedocs.org
  * PYPI: https://pypi.python.org/pypi/discogui
 
-|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Downloads| |Code Health| |Documentation|
+|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Code Health| |Documentation|
 
 Features:
  * python module
@@ -266,8 +266,6 @@ Output::
 .. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/discogui.svg
    :target: https://pypi.python.org/pypi/discogui/
 .. |License| image:: https://img.shields.io/pypi/l/discogui.svg
-   :target: https://pypi.python.org/pypi/discogui/
-.. |Downloads| image:: https://img.shields.io/pypi/dm/discogui.svg
    :target: https://pypi.python.org/pypi/discogui/
 .. |Code Health| image:: https://landscape.io/github/ponty/discogui/master/landscape.svg?style=flat
    :target: https://landscape.io/github/ponty/discogui/master
