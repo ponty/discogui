@@ -34,4 +34,3 @@ nosetests.xml
 sloccount.sc
 *.prefs
 
-docs/api/*.rst
