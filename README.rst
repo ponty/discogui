@@ -15,10 +15,6 @@ Features:
  * only  basic tests on very simple GUI
  * GUI should be displayed on Xvfb or Xephyr
  
-Known problems:
- - Python 3 is not supported
- - slow
-
 Possible applications:
  * automatic GUI testing
  * automatic GUI control
