@@ -83,11 +83,11 @@ class ScreenRect(object):
     right = property(get_right, set_right)
 
     def set_center(self, xy):
-        self.left = xy[0] - (self.width * 0.5)
-        self.top = xy[1] - (self.height * 0.5)
+        self.left = xy[0] - int(self.width * 0.5)
+        self.top = xy[1] - int(self.height * 0.5)
 
     def get_center(self):
-        return self.left + (self.width * 0.5), self.top + (self.height * 0.5)
+        return self.left + int(self.width * 0.5), self.top + int(self.height * 0.5)
     center = property(get_center, set_center)
 
     def set_bottomleft(self, xy):

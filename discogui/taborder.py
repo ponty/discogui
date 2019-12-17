@@ -102,7 +102,7 @@ def tab_rect_pair(img_orig, im_next):
             r1 = bbox.top
             r2 = bbox.bottom
         ls = []
-        for c in xrange(int(r1), int(r2)):
+        for c in range(int(r1), int(r2)):
             if horiz:
                 p1 = (c, bbox.top)
                 p2 = (c, bbox.bottom)

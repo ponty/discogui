@@ -20,7 +20,6 @@ from time import sleep
 
 
 log = logging.getLogger(__name__)
-# log = logging
 
 
 def is_point_active(img_orig, point, mouse=None):
@@ -42,7 +41,7 @@ def is_point_active(img_orig, point, mouse=None):
     log.debug('point:' + str(point))
 
     mouse.move(point[0], point[1])
-    sleep(0.1)
+    sleep(0.2)
     img_hover = pyscreenshot.grab()
     mouse.move(0, 0)
 
@@ -75,8 +74,8 @@ def active_rectangles(grid=30):
     rct_wnd = getbbox(img_orig)
 
     ls = []
-    for y in xrange(rct_wnd.top + grid / 2, rct_wnd.bottom, grid - grid / 2):
-        for x in xrange(rct_wnd.left + grid / 2, rct_wnd.right - grid / 2, grid):
+    for y in range(int(rct_wnd.top + grid / 2), int(rct_wnd.bottom), int(grid - grid / 2)):
+        for x in range(int(rct_wnd.left + grid / 2), int(rct_wnd.right - grid / 2), grid):
             bbox = is_point_active(img_orig, (x, y), mouse=mouse)
             if bbox and bbox not in ls:
                 ls.append(bbox)
