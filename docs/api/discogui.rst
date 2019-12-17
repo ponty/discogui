@@ -75,14 +75,6 @@ discogui.screenrect module
     :undoc-members:
     :show-inheritance:
 
-discogui.sendkeys module
-------------------------
-
-.. automodule:: discogui.sendkeys
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 discogui.taborder module
 ------------------------
 

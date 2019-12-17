@@ -1,5 +1,5 @@
 from discogui.imgutil import getbbox, focus_wnd
-from discogui.sendkeys import send_key, send_key_list
+from pykeyboard import PyKeyboard
 from easyprocess import EasyProcess
 from pyscreenshot import grab
 from pyvirtualdisplay.smartdisplay import SmartDisplay
@@ -25,29 +25,31 @@ class Test(TestCase):
     def test_zenity(self):
         self.p = EasyProcess('zenity --warning').start()
         self.wait()
-        send_key('\n')
+        k = PyKeyboard()
+        k.tap_key(k.enter_key)
         self.assertFalse(getbbox(grab()))
 
         self.p = EasyProcess('zenity --warning').start()
         self.wait()
-        send_key_list(['\n'])
+        k.tap_key(k.enter_key)
         self.assertFalse(getbbox(grab()))
 
         self.p = EasyProcess('zenity --warning').start()
         self.wait()
-        send_key(' ')
+        k.tap_key(' ')
         self.assertFalse(getbbox(grab()))
 
         self.p = EasyProcess('zenity --warning').start()
         self.wait()
-        send_key('x')
+        k.tap_key('x')
         self.assertTrue(getbbox(grab()))
 
     def test_gcalctool1(self):
         self.p = EasyProcess('gnome-calculator').start()
         self.wait()
         focus_wnd()
-        send_key('ctrl+q')
+        k = PyKeyboard()
+        k.press_keys([k.control_key,'q'])
         time.sleep(1)
 #        img_debug(grab(), 'ctrl+q')
         self.assertFalse(getbbox(grab()))

@@ -11,7 +11,7 @@ and comparing the image with the original.
 from discogui.imglog import img_log, img_log_rects
 from discogui.imgutil import getbbox, focus_wnd
 from discogui.screenrect import ScreenRect
-from discogui.sendkeys import send_key
+from pykeyboard import PyKeyboard
 from PIL import ImageChops
 from PIL import ImageFilter
 from PIL import ImageStat
@@ -51,9 +51,9 @@ def tab_rectangles():
     img_orig = focus_wnd()
 
     im1 = img_orig
-
+    k = PyKeyboard()
     while 1:
-        send_key('\t')
+        k.tap_key(k.tab_key)
         im2 = pyscreenshot.grab()
 
         img_log(im1, 'im1')

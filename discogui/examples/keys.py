@@ -1,7 +1,7 @@
 from easyprocess import EasyProcess
 from pyscreenshot import grab
 from discogui.imgutil import autocrop, focus_wnd
-from discogui.sendkeys import send_key_list
+from pykeyboard import PyKeyboard
 from pyvirtualdisplay import Display
 import time
 
@@ -24,7 +24,9 @@ def main():
             # wait for displaying the window
             time.sleep(0.5)
             focus_wnd()
-            send_key_list(['2', '*', '2', '=', '\n'])
+            k = PyKeyboard()
+            k.type_string('2*2=')
+            k.tap_key(k.enter_key)
             time.sleep(0.5)
             img = autocrop(grab())
 

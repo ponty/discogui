@@ -87,7 +87,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y libjpeg-dev zlib1g-dev
   
 # project dependencies
-  sudo apt-get install -y python-xlib scrot python-pil xdotool xvfb
+  sudo apt-get install -y python-xlib scrot python-pil xvfb
   sudo pip install https://github.com/pepijndevos/PyMouse/zipball/master
   sudo pip install path.py PyScreenshot easyprocess pyvirtualdisplay
 

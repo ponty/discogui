@@ -43,7 +43,6 @@ General
  * install Xlib
  * install scrot
  * install PIL_
- * install xdotool
  * install pip_
  * install latest PyMouse and the program::
 
@@ -55,7 +54,7 @@ Ubuntu 14.04
 ------------
 ::
 
-    sudo apt-get install python-pip xvfb python-xlib scrot python-pil xdotool
+    sudo apt-get install python-pip xvfb python-xlib scrot python-pil
     sudo pip install https://github.com/pepijndevos/PyMouse/zipball/master
     sudo pip install discogui
 
