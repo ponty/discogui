@@ -4,6 +4,7 @@
 3. print rectangles
 4. draw red rectangles on screenshot
 '''
+from time import sleep
 from easyprocess import EasyProcess
 from pyscreenshot import grab
 from discogui.buttons import discover_buttons
@@ -14,9 +15,8 @@ from pyvirtualdisplay import Display
 
 def main():
     with Display(visible=0):
-        with EasyProcess('zenity --question') as p:
-            p.sleep(1)
-
+        with EasyProcess('zenity --question'):
+            sleep(1)
             img = grab()
             rectangles = discover_buttons()
             print(rectangles)

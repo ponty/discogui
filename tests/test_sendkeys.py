@@ -4,7 +4,7 @@ from easyprocess import EasyProcess
 from pyscreenshot import grab
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 from unittest import TestCase
-import time
+from time import sleep
 
 VISIBLE = 0
 
@@ -50,7 +50,7 @@ class Test(TestCase):
         focus_wnd()
         k = PyKeyboard()
         k.press_keys([k.control_key, 'q'])
-        time.sleep(1)
+        sleep(1)
 #        img_debug(grab(), 'ctrl+q')
         self.assertFalse(getbbox(grab()))
 
