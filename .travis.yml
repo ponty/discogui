@@ -1,10 +1,14 @@
 language: python
-python:
- - "2.7"
- - "3.6"
+# python:
+#  - "2.7"
+#  - "3.6"
 
 matrix:
   include:
+    - name: 2.7_bionic
+      python: 2.7
+      dist: bionic
+
     - name: 3.7_bionic
       python: 3.7
       dist: bionic
