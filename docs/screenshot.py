@@ -7,8 +7,9 @@ import logging
 FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.DEBUG, format=FORMAT)
 
+
 def screenshot(cmd, fname):
-    logging.info('%s %s',cmd, fname)
+    logging.info('%s %s', cmd, fname)
     fpath = 'docs/_img/%s' % fname
     if os.path.exists(fpath):
         os.remove(fpath)

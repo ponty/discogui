@@ -33,6 +33,7 @@ class ScreenRect(object):
 
 
     """
+
     def __init__(self, *args, **kwargs):
         """
         xywh must be a 2 or 4 tuple or a rect instance.

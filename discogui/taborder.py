@@ -137,7 +137,7 @@ def tab_rect_pair(img_orig, im_next):
         box2 = getbbox(img_diff.crop(rsegment2))
         box2.move(rsegment2.topleft)
 
-        return   box1, box2
+        return box1, box2
     r = check_edges(0)
     if r is None:
         r = check_edges(1)
@@ -147,8 +147,8 @@ def tab_rect_pair(img_orig, im_next):
     box1, box2 = r
     d1 = darker(img_orig, im_next, box1)
     d2 = darker(img_orig, im_next, box2)
-    if d1==d2:
-        log.warning( 'd1 == d2  %s  %s %s %s', d1, d2, box1, box2)
+    if d1 == d2:
+        log.warning('d1 == d2  %s  %s %s %s', d1, d2, box1, box2)
     if d1 == 1:
         boxes = (box1, box2)
     else:

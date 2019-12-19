@@ -17,16 +17,17 @@ from pyvirtualdisplay.smartdisplay import SmartDisplay
 def main():
     with SmartDisplay(size=(640, 480), visible=0) as disp:
         with EasyProcess('gnumeric'):
-#            time.sleep(2)
+            #            time.sleep(2)
             img = disp.waitgrab(timeout=60)
             rectangles = active_rectangles()
-            print( rectangles )
+            print(rectangles)
 
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)
 
     # display results
     img.show()
+
 
 if __name__ == '__main__':
     main()

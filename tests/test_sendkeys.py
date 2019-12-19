@@ -49,7 +49,7 @@ class Test(TestCase):
         self.wait()
         focus_wnd()
         k = PyKeyboard()
-        k.press_keys([k.control_key,'q'])
+        k.press_keys([k.control_key, 'q'])
         time.sleep(1)
 #        img_debug(grab(), 'ctrl+q')
         self.assertFalse(getbbox(grab()))

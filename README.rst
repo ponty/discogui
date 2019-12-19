@@ -30,9 +30,7 @@ Basic usage::
             buttons = discover_buttons()
     print(buttons)
 
-
 Installation::
-
     
     sudo apt install python3-pip xvfb scrot
     pip install discogui

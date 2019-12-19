@@ -13,7 +13,7 @@ def main():
         with EasyProcess('zenity --question') as p:
             p.sleep(5)
             buttons = discover_buttons()
-    print( buttons )
+    print(buttons)
 
 
 if __name__ == '__main__':

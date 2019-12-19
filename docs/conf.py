@@ -17,10 +17,10 @@ sys.path.insert(0, os.path.abspath('..'))
 extensions = [
     # -*-Extensions: -*-
     'sphinx.ext.autodoc',
-#     'sphinxcontrib.programoutput',
-#     'sphinxcontrib.programscreenshot',
-    #'sphinx.ext.graphviz',
-    #'sphinx.ext.autosummary',
+    #     'sphinxcontrib.programoutput',
+    #     'sphinxcontrib.programscreenshot',
+    # 'sphinx.ext.graphviz',
+    # 'sphinx.ext.autosummary',
 ]
 # intersphinx_mapping = {'http://docs.python.org/': None}
 
