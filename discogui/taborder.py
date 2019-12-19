@@ -16,6 +16,7 @@ from PIL import ImageChops
 from PIL import ImageFilter
 from PIL import ImageStat
 import logging
+import time
 import pyscreenshot
 
 
@@ -54,6 +55,7 @@ def tab_rectangles():
     k = PyKeyboard()
     while 1:
         k.tap_key(k.tab_key)
+        time.sleep(0.1)
         im2 = pyscreenshot.grab()
 
         img_log(im1, 'im1')
