@@ -15,6 +15,6 @@ def screenshot(cmd, fname):
         os.remove(fpath)
     with SmartDisplay(visible=0, bgcolor='black') as disp:
         with EasyProcess(cmd):
-            img = disp.waitgrab()
+            img = disp.waitgrab(timeout=5*60)
             img.save(fpath)
             cog.outl('.. image:: _img/%s' % fname)
