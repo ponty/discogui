@@ -219,7 +219,7 @@ Output::
 .. _Xephyr: http://en.wikipedia.org/wiki/Xephyr
 
 
-.. |Travis| image:: http://img.shields.io/travis/ponty/discogui.svg
+.. |Travis| image:: https://travis-ci.org/ponty/discogui.svg?branch=master
    :target: https://travis-ci.org/ponty/discogui/
 .. |Latest Version| image:: https://img.shields.io/pypi/v/discogui.svg
    :target: https://pypi.python.org/pypi/discogui/
