@@ -81,23 +81,20 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3-distutils
 
 # tools
-  sudo apt-get install -y mc python-pip xvfb xserver-xephyr
-
-# for pillow source install
-  sudo apt-get install -y libjpeg-dev zlib1g-dev
-  
+  sudo apt-get install -y mc python-pip xvfb xserver-xephyr scrot
+ 
 # project dependencies
-  sudo apt-get install -y python-xlib scrot python-pil xvfb
-  sudo pip install https://github.com/pepijndevos/PyMouse/zipball/master
-  sudo pip install path.py PyScreenshot easyprocess pyvirtualdisplay
-
+  sudo pip  install -r /vagrant/requirements.txt
+  sudo pip3 install -r /vagrant/requirements.txt
 
 # test dependencies
   sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric imagemagick
-  sudo pip install -r /vagrant/requirements-test.txt
+  sudo pip  install -r /vagrant/requirements-test.txt
+  sudo pip3 install -r /vagrant/requirements-test.txt
   
 # doc dependencies
-  sudo pip install -r /vagrant/requirements-doc.txt
+  sudo pip  install -r /vagrant/requirements-doc.txt
+  sudo pip3 install -r /vagrant/requirements-doc.txt
   
   "
       config.vm.provision "shell", inline: $script
