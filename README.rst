@@ -19,21 +19,10 @@ Possible applications:
  * automatic GUI testing
  * automatic GUI control
 
-Basic usage::
-
-    from discogui.buttons import discover_buttons
-    from easyprocess import EasyProcess
-    from pyvirtualdisplay import Display
-    with Display():
-        with EasyProcess('zenity --question') as p:   
-            p.sleep(1)         
-            buttons = discover_buttons()
-    print(buttons)
-
 Installation::
     
-    sudo apt install python3-pip xvfb scrot
-    pip install discogui
+    sudo apt install xvfb
+    pip3 install discogui
 
 Usage
 =====
@@ -53,6 +42,7 @@ Code::
   2. discover buttons using :mod:`discogui.buttons` module
   3. print rectangles
   '''
+  from time import sleep
   from discogui.buttons import discover_buttons
   from easyprocess import EasyProcess
   from pyvirtualdisplay import Display
@@ -60,10 +50,10 @@ Code::
 
   def main():
       with Display(visible=0):
-          with EasyProcess('zenity --question') as p:
-              p.sleep(5)
+          with EasyProcess('zenity --question'):
+              sleep(5)
               buttons = discover_buttons()
-      print( buttons )
+      print(buttons)
 
 
   if __name__ == '__main__':
@@ -73,8 +63,10 @@ Code::
     
 Output::
 
-  #-- sh('python -m discogui.examples.basic 2>/dev/null')--#
-  [ScreenRect((582,407,667,442)), ScreenRect((491,407,576,442))]
+  #-- sh('python3 -m discogui.examples.basic 2>/dev/null')--#
+  tab_ls: [ScreenRect((547,426,568,435)), ScreenRect((501,329,571,397)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
+  ls: [ScreenRect((547,426,568,435)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
+  [ScreenRect((547,426,568,435)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
   #-#
 
 
@@ -90,6 +82,7 @@ Code::
   3. print rectangles
   4. draw red rectangles on screenshot
   '''
+  from time import sleep
   from easyprocess import EasyProcess
   from pyscreenshot import grab
   from discogui.buttons import discover_buttons
@@ -100,12 +93,11 @@ Code::
 
   def main():
       with Display(visible=0):
-          with EasyProcess('zenity --question') as p:
-              p.sleep(1)
-
+          with EasyProcess('zenity --question'):
+              sleep(1)
               img = grab()
               rectangles = discover_buttons()
-              print( rectangles )
+              print(rectangles)
 
       img = draw_indexed_rect_list(img, rectangles)
       img = autocrop(img)
@@ -113,13 +105,14 @@ Code::
       # display results
       img.show()
 
+
   if __name__ == '__main__':
       main()
   #-#
       
 Image:
 
-..  #-- screenshot('python -m discogui.examples.buttondiscovery','screenshot_buttondiscovery.png') --#
+..  #-- screenshot('python3 -m discogui.examples.buttondiscovery','screenshot_buttondiscovery.png') --#
 .. image:: _img/screenshot_buttondiscovery.png
 ..  #-#
 
@@ -140,25 +133,21 @@ Code::
   from discogui.hover import active_rectangles
   from discogui.imgutil import autocrop
   from easyprocess import EasyProcess
-  # from pyscreenshot import grab
-  # from pyvirtualdisplay import Display
   from pyvirtualdisplay.smartdisplay import SmartDisplay
-  # import time
 
 
   def main():
       with SmartDisplay(size=(640, 480), visible=0) as disp:
           with EasyProcess('gnumeric'):
-  #            time.sleep(2)
               img = disp.waitgrab(timeout=60)
               rectangles = active_rectangles()
-              print( rectangles )
-
+              print(rectangles)
       img = draw_indexed_rect_list(img, rectangles)
       img = autocrop(img)
 
       # display results
       img.show()
+
 
   if __name__ == '__main__':
       main()
@@ -166,7 +155,7 @@ Code::
       
 Image:
 
-..  #-- screenshot('python -m discogui.examples.hovergnumeric','screenshot_hovergnumeric.png') --#
+..  #-- screenshot('python3 -m discogui.examples.hovergnumeric','screenshot_hovergnumeric.png') --#
 .. image:: _img/screenshot_hovergnumeric.png
 ..  #-#
 
@@ -186,21 +175,23 @@ Code::
   from discogui.mouse import PyMouse
   from easyprocess import EasyProcess
   from pyvirtualdisplay import Display
-  import time
-
+  from time import sleep
+  # from entrypoint2 import entrypoint
 
   def click_button_get_return_code(which_button):
       with EasyProcess('zenity --question') as p:
-          time.sleep(1)
+          sleep(1)
           rectangles = discover_buttons()
+          print(rectangles)
           PyMouse().click(*rectangles[which_button].center)
           return p.wait().return_code
 
-
+  # @entrypoint
   def main():
       with Display():
-          print( click_button_get_return_code(0) )
-          print( click_button_get_return_code(1) )
+          print(click_button_get_return_code(0))
+          print(click_button_get_return_code(1))
+
 
   if __name__ == '__main__':
       main()
@@ -209,8 +200,14 @@ Code::
 
 Output::
 
-  #-- sh('python -m discogui.examples.clickbutton 2>/dev/null')--#
+  #-- sh('python3 -m discogui.examples.clickbutton 2>/dev/null')--#
+  tab_ls: [ScreenRect((547,426,568,435)), ScreenRect((501,329,571,397)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
+  ls: [ScreenRect((547,426,568,435)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
+  [ScreenRect((547,426,568,435)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
   0
+  tab_ls: [ScreenRect((547,426,568,435)), ScreenRect((501,329,571,397)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
+  ls: [ScreenRect((547,426,568,435)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
+  [ScreenRect((547,426,568,435)), ScreenRect((427,418,510,444)), ScreenRect((516,418,599,444))]
   1
   #-#
 
