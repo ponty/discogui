@@ -23,36 +23,37 @@ class Test(TestCase):
         self.screen.stop()
 
     def test_zenity(self):
-        self.p = EasyProcess('zenity --warning').start()
+        self.p = EasyProcess("zenity --warning").start()
         self.wait()
         k = PyKeyboard()
         k.tap_key(k.enter_key)
         self.assertFalse(getbbox(grab()))
 
-        self.p = EasyProcess('zenity --warning').start()
+        self.p = EasyProcess("zenity --warning").start()
         self.wait()
         k.tap_key(k.enter_key)
         self.assertFalse(getbbox(grab()))
 
-        self.p = EasyProcess('zenity --warning').start()
+        self.p = EasyProcess("zenity --warning").start()
         self.wait()
-        k.tap_key(' ')
+        k.tap_key(" ")
         self.assertFalse(getbbox(grab()))
 
-        self.p = EasyProcess('zenity --warning').start()
+        self.p = EasyProcess("zenity --warning").start()
         self.wait()
-        k.tap_key('x')
+        k.tap_key("x")
         self.assertTrue(getbbox(grab()))
 
     def test_gcalctool1(self):
-        self.p = EasyProcess('gnome-calculator').start()
+        self.p = EasyProcess("gnome-calculator").start()
         self.wait()
         focus_wnd()
         k = PyKeyboard()
-        k.press_keys([k.control_key, 'q'])
+        k.press_keys([k.control_key, "q"])
         sleep(1)
-#        img_debug(grab(), 'ctrl+q')
+        #        img_debug(grab(), 'ctrl+q')
         self.assertFalse(getbbox(grab()))
+
 
 #    def test_gcalctool2(self):
 #        self.p = EasyProcess('gcalctool').start()

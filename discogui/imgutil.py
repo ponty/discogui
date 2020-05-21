@@ -5,7 +5,7 @@ import pyscreenshot
 
 
 def getbbox(img, outside=False):
-    '''
+    """
     Get bounding box.
     PIL getbbox() is not symmetrical on left/right.
 
@@ -15,7 +15,7 @@ def getbbox(img, outside=False):
     :param img: PIL image
     :param outside: bool
     :rtype: ScreenRect
-    '''
+    """
     bbox = img.getbbox()
     if bbox:
         bbox = ScreenRect(bbox)
@@ -40,12 +40,12 @@ class EmptyScreenException(Exception):
 
 
 def focus_wnd():
-    '''
+    """
     move mouse over window to get focus
-    '''
+    """
     rct_wnd = getbbox(pyscreenshot.grab())
     if not rct_wnd:
-        raise EmptyScreenException('Empty screen!')
+        raise EmptyScreenException("Empty screen!")
 
     imglog.set_crop_rect(rct_wnd)
 
@@ -54,5 +54,5 @@ def focus_wnd():
     mouse.move(*rct_wnd.topleft)
 
     img_orig = pyscreenshot.grab()
-    imglog.img_log(img_orig, 'img_orig')
+    imglog.img_log(img_orig, "img_orig")
     return img_orig

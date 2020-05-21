@@ -1,11 +1,11 @@
-'''
+"""
 Copy of Rect5 (http://pypi.python.org/pypi/Rect/5)
 
 changes:
 - top and bottom are exchanged
 - int instead float
 - new methods starting at __getitem__
-'''
+"""
 
 
 class ScreenRect(object):
@@ -40,7 +40,7 @@ class ScreenRect(object):
 
         (left, top, width, height) or (width, height)
         """
-        from_size = kwargs.get('from_size', False)
+        from_size = kwargs.get("from_size", False)
         if len(args) == 1:
             xywh = args[0]
         else:
@@ -54,17 +54,29 @@ class ScreenRect(object):
             if len(xywh) == 4:
                 if from_size:
                     self.left, self.top, self.width, self.height = (
-                        int(i) for i in xywh)
+                        int(i) for i in xywh
+                    )
                 else:
                     x = list(int(i) for i in xywh)
                     self.left, self.top, self.width, self.height = (
-                        x[0], x[1], x[2] - x[0], x[3] - x[1])
+                        x[0],
+                        x[1],
+                        x[2] - x[0],
+                        x[3] - x[1],
+                    )
             elif len(xywh) == 2:
-                self.left, self.top, self.width, self.height = (
-                    0, 0) + tuple(int(i) for i in xywh)
+                self.left, self.top, self.width, self.height = (0, 0) + tuple(
+                    int(i) for i in xywh
+                )
 
     def __repr__(self):
-        return "%s((%s,%s,%s,%s))" % (self.__class__.__name__, self.left, self.top, self.right, self.bottom)
+        return "%s((%s,%s,%s,%s))" % (
+            self.__class__.__name__,
+            self.left,
+            self.top,
+            self.right,
+            self.bottom,
+        )
 
     def __iter__(self):
         return (i for i in (self.left, self.top, self.right, self.bottom))
@@ -74,6 +86,7 @@ class ScreenRect(object):
 
     def get_bottom(self):
         return self.top + self.height
+
     bottom = property(get_bottom, set_bottom)
 
     def set_right(self, s):
@@ -81,6 +94,7 @@ class ScreenRect(object):
 
     def get_right(self):
         return self.left + self.width
+
     right = property(get_right, set_right)
 
     def set_center(self, xy):
@@ -89,6 +103,7 @@ class ScreenRect(object):
 
     def get_center(self):
         return self.left + int(self.width * 0.5), self.top + int(self.height * 0.5)
+
     center = property(get_center, set_center)
 
     def set_bottomleft(self, xy):
@@ -97,6 +112,7 @@ class ScreenRect(object):
 
     def get_bottomleft(self):
         return self.left, self.bottom
+
     bottomleft = property(get_bottomleft, set_bottomleft)
 
     def set_bottomright(self, xy):
@@ -105,6 +121,7 @@ class ScreenRect(object):
 
     def get_bottomright(self):
         return self.right, self.bottom
+
     bottomright = property(get_bottomright, set_bottomright)
 
     def set_topright(self, xy):
@@ -113,6 +130,7 @@ class ScreenRect(object):
 
     def get_topright(self):
         return self.right, self.top
+
     topright = property(get_topright, set_topright)
 
     def set_topleft(self, xy):
@@ -121,6 +139,7 @@ class ScreenRect(object):
 
     def get_topleft(self):
         return self.left, self.top
+
     topleft = property(get_topleft, set_topleft)
 
     def __add__(self, other):
@@ -164,7 +183,12 @@ class ScreenRect(object):
         Test if a point intersects with this rect.
         """
         x, y = xy
-        return x >= self.left and x <= (self.left + self.width) and y >= self.top and y <= (self.top + self.height)
+        return (
+            x >= self.left
+            and x <= (self.left + self.width)
+            and y >= self.top
+            and y <= (self.top + self.height)
+        )
 
     def intersects(self, other):
         """
@@ -182,6 +206,7 @@ class ScreenRect(object):
 
     def get_area(self):
         return self.width * self.height
+
     area = property(get_area)
 
     def intersection(self, other):

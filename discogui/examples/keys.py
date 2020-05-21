@@ -5,17 +5,17 @@ from pykeyboard import PyKeyboard
 from pyvirtualdisplay import Display
 from time import sleep
 
-CALCULATORS = '''
+CALCULATORS = """
 gnome-calculator
 gcalctool
-'''
+"""
 
 
 def find_calculator():
     for calc in CALCULATORS.strip().splitlines():
-        if EasyProcess([calc, '-h']).call().return_code == 0:
+        if EasyProcess([calc, "-h"]).call().return_code == 0:
             return calc
-    raise ValueError('no calculator found!')
+    raise ValueError("no calculator found!")
 
 
 def main():
@@ -25,7 +25,7 @@ def main():
             sleep(0.5)
             focus_wnd()
             k = PyKeyboard()
-            k.type_string('2*2=')
+            k.type_string("2*2=")
             k.tap_key(k.enter_key)
             sleep(0.5)
             img = autocrop(grab())
@@ -33,5 +33,5 @@ def main():
     img.show()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

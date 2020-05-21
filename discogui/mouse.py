@@ -3,12 +3,12 @@ import sys
 
 
 def PyMouse():
-    '''
+    """
     wrapper, turn off print coming from Xlib.ext.randr
-    '''
+    """
     # Quick, turn off printing!
     class dummyStream:
-        ''' dummyStream behaves like a stream but does nothing. '''
+        """ dummyStream behaves like a stream but does nothing. """
 
         def __init__(self):
             pass
@@ -24,6 +24,7 @@ def PyMouse():
 
         def close(self):
             pass
+
     # Copy old print deals
     old = sys.stdout
     # redirect all print deals

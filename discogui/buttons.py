@@ -1,4 +1,4 @@
-'''
+"""
 Try to find buttons on the window.
 
 1. get controls by :mod:`discogui.taborder`
@@ -11,7 +11,7 @@ Try to find buttons on the window.
      It does not work if the GUI changes during the scan.
      (e.g. blinking cursor)
 
-'''
+"""
 
 from discogui import hover
 from discogui.imglog import img_log_rects
@@ -23,13 +23,13 @@ log = logging.getLogger(__name__)
 
 
 def discover_buttons(grid=30):
-    '''
+    """
     try to get buttons by tab order
-    '''
+    """
     tab_ls = tab_rectangles()
 
     if not len(tab_ls):
-        log.debug('no tab order on window -> full hover test')
+        log.debug("no tab order on window -> full hover test")
         # slow, no tab order
         return hover.active_rectangles(grid=grid)
 
@@ -41,6 +41,6 @@ def discover_buttons(grid=30):
         if bbox:
             ls += [x]
 
-    img_log_rects(img_orig, ls, 'img_orig')
-    log.debug('buttons found:%s', ls)
+    img_log_rects(img_orig, ls, "img_orig")
+    log.debug("buttons found:%s", ls)
     return ls

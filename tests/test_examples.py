@@ -1,5 +1,4 @@
-from discogui.examples import basic, clickbutton, keys, hovergnumeric, \
-    buttondiscovery
+from discogui.examples import basic, clickbutton, keys, hovergnumeric, buttondiscovery
 
 
 def test_examples():

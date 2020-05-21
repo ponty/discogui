@@ -20,23 +20,23 @@ class Test(TestCase):
 
     # def test_empty(self):
     #    self.p = EasyProcess('zenity --warning').start()
-        # wnd is not ready
+    # wnd is not ready
     #    self.assertRaises(EmptyScreenException, tab_rectangles)
 
-#    def test_zenity(self):
-#        self.p = EasyProcess('zenity --warning').start()
-#        self.wait()
-#        ls = tab_rectangles()
-#        self.assertEquals(len(ls), 2)
+    #    def test_zenity(self):
+    #        self.p = EasyProcess('zenity --warning').start()
+    #        self.wait()
+    #        ls = tab_rectangles()
+    #        self.assertEquals(len(ls), 2)
 
     def test_notab(self):
-        self.p = EasyProcess('xmessage hi').start()
+        self.p = EasyProcess("xmessage hi").start()
         self.wait()
         ls = tab_rectangles()
         self.assertEquals(len(ls), 0)
 
     def test_gmessage(self):
-        self.p = EasyProcess('gmessage -buttons x,y,z hi').start()
+        self.p = EasyProcess("gmessage -buttons x,y,z hi").start()
         self.wait()
         ls = tab_rectangles()
         self.assertEquals(len(ls), 4)
