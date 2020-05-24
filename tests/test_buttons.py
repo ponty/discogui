@@ -1,5 +1,4 @@
 from easyprocess import EasyProcess
-from nose.tools import eq_
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
@@ -10,7 +9,7 @@ def test_zenity():
         with EasyProcess("zenity --warning") as p:
             d.waitgrab()
             ls = discover_buttons()
-            eq_(len(ls), 1)
+            assert len(ls) == 1
 
 
 def test_notab():
@@ -18,7 +17,7 @@ def test_notab():
         with EasyProcess("xmessage -buttons x,y,z hi") as p:
             d.waitgrab()
             ls = discover_buttons(grid=10)
-            eq_(len(ls), 3)
+            assert len(ls) == 3
 
 
 def test_gmessage():
@@ -26,4 +25,4 @@ def test_gmessage():
         with EasyProcess("gmessage -buttons x,y,z hi") as p:
             d.waitgrab()
             ls = discover_buttons()
-            eq_(len(ls), 3)
+            assert len(ls) == 3

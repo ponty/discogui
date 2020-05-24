@@ -1,6 +1,4 @@
-tox
-nose
-coverage
+pytest
 pyvirtualdisplay
 pillow
 

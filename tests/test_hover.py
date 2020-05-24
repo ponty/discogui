@@ -1,43 +1,28 @@
-from unittest import TestCase
-
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.hover import active_rectangles
 
 
-class Test(TestCase):
-    def wait(self):
-        self.screen.waitgrab()
+def test_zenity():
+    with SmartDisplay() as disp:
+        with EasyProcess("zenity --warning"):
+            disp.waitgrab()
+            ls = active_rectangles()
+            assert len(ls) == 1
 
-    def setUp(self):
-        self.screen = SmartDisplay()
-        self.screen.start()
 
-    def tearDown(self):
-        self.p.stop()
-        self.screen.stop()
+def test_notab():
+    with SmartDisplay() as disp:
+        with EasyProcess("xmessage -buttons x,y,z hi"):
+            disp.waitgrab()
+            ls = active_rectangles(grid=10)
+            assert len(ls) == 3
 
-    #    def test_empty(self):
-    #        self.p = EasyProcess('zenity --warning').start()
-    # wnd is not ready
-    # time.sleep(0.2)
-    #        self.assertRaises(EmptyScreenException, active_rectangles)
 
-    def test_zenity(self):
-        self.p = EasyProcess("zenity --warning").start()
-        self.wait()
-        ls = active_rectangles()
-        self.assertEquals(len(ls), 1)
-
-    def test_notab(self):
-        self.p = EasyProcess("xmessage -buttons x,y,z hi").start()
-        self.wait()
-        ls = active_rectangles(grid=10)
-        self.assertEquals(len(ls), 3)
-
-    def test_gmessage(self):
-        self.p = EasyProcess("gmessage -buttons x,y,z hi").start()
-        self.wait()
-        ls = active_rectangles()
-        self.assertEquals(len(ls), 3)
+def test_gmessage():
+    with SmartDisplay() as disp:
+        with EasyProcess("gmessage -buttons x,y,z hi"):
+            disp.waitgrab()
+            ls = active_rectangles()
+            assert len(ls) == 3

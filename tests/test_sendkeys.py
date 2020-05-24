@@ -1,5 +1,4 @@
 from time import sleep
-from unittest import TestCase
 
 from easyprocess import EasyProcess
 from pykeyboard import PyKeyboard
@@ -11,60 +10,36 @@ from discogui.imgutil import focus_wnd, getbbox
 VISIBLE = 0
 
 
-class Test(TestCase):
-    def wait(self):
-        self.screen.waitgrab()
+def test_zenity():
+    with SmartDisplay() as disp:
+        with EasyProcess("zenity --warning"):
+            disp.waitgrab()
+            k = PyKeyboard()
+            k.tap_key(k.enter_key)
+            assert not getbbox(grab())
 
-    def setUp(self):
-        self.screen = SmartDisplay(visible=VISIBLE)
-        self.screen.start()
-        self.p = None
+        with EasyProcess("zenity --warning"):
+            disp.waitgrab()
+            k.tap_key(k.enter_key)
+            assert not getbbox(grab())
 
-    def tearDown(self):
-        self.p.stop()
-        self.screen.stop()
+        with EasyProcess("zenity --warning"):
+            disp.waitgrab()
+            k.tap_key(" ")
+            assert not getbbox(grab())
 
-    def test_zenity(self):
-        self.p = EasyProcess("zenity --warning").start()
-        self.wait()
-        k = PyKeyboard()
-        k.tap_key(k.enter_key)
-        self.assertFalse(getbbox(grab()))
-
-        self.p = EasyProcess("zenity --warning").start()
-        self.wait()
-        k.tap_key(k.enter_key)
-        self.assertFalse(getbbox(grab()))
-
-        self.p = EasyProcess("zenity --warning").start()
-        self.wait()
-        k.tap_key(" ")
-        self.assertFalse(getbbox(grab()))
-
-        self.p = EasyProcess("zenity --warning").start()
-        self.wait()
-        k.tap_key("x")
-        self.assertTrue(getbbox(grab()))
-
-    def test_gcalctool1(self):
-        self.p = EasyProcess("gnome-calculator").start()
-        self.wait()
-        focus_wnd()
-        k = PyKeyboard()
-        k.press_keys([k.control_key, "q"])
-        sleep(1)
-        #        img_debug(grab(), 'ctrl+q')
-        self.assertFalse(getbbox(grab()))
+        with EasyProcess("zenity --warning"):
+            disp.waitgrab()
+            k.tap_key("x")
+            assert getbbox(grab())
 
 
-#    def test_gcalctool2(self):
-#        self.p = EasyProcess('gcalctool').start()
-#        self.wait()
-#        focus_wnd()
-#        send_key('alt+c')
-# #        img_debug(grab(), 'altc')
-#        time.sleep(1)
-#        send_key('q')
-#        time.sleep(1)
-# #        img_debug(grab(), 'q')
-#        self.assertFalse(getbbox(grab()))
+def test_gcalctool1():
+    with SmartDisplay() as disp:
+        with EasyProcess("gnome-calculator"):
+            disp.waitgrab()
+            focus_wnd()
+            k = PyKeyboard()
+            k.press_keys([k.control_key, "q"])
+            sleep(1)
+            assert not getbbox(grab())
