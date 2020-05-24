@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
      # Customize the amount of memory on the VM:
-     vb.memory = "512"
+     vb.memory = "1024"
    end
   #
   # View the documentation for the provider you are using for more
@@ -69,7 +69,7 @@ Vagrant.configure(2) do |config|
   echo 'export export LC_ALL=C' >> /home/vagrant/.profile
   
   # create .Xauthority
-  su - vagrant -c 'xauth add :0 . `mcookie`'
+  #su - vagrant -c 'xauth add :0 . `mcookie`'
   
 # install python versions
   sudo add-apt-repository --yes  ppa:deadsnakes/ppa
@@ -80,7 +80,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3-distutils
 
 # tools
-  sudo apt-get install -y mc python-pip xvfb xserver-xephyr scrot
+  sudo apt-get install -y mc python-pip python3-pip xvfb xserver-xephyr scrot
  
 # project dependencies
   sudo pip  install -r /vagrant/requirements.txt
@@ -88,8 +88,9 @@ Vagrant.configure(2) do |config|
 
 # test dependencies
   sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric imagemagick
-  sudo pip  install -r /vagrant/requirements-test.txt
-  sudo pip3 install -r /vagrant/requirements-test.txt
+  #sudo pip  install -r /vagrant/requirements-test.txt
+  #sudo pip3 install -r /vagrant/requirements-test.txt
+  sudo pip3 install tox
   
 # doc dependencies
   sudo pip  install -r /vagrant/requirements-doc.txt
