@@ -1,8 +1,10 @@
-from logging import DEBUG
-from path import Path
-from tempfile import mkdtemp, gettempdir
-from discogui.draw import draw_indexed_rect_list
 import logging
+from logging import DEBUG
+from tempfile import gettempdir, mkdtemp
+
+from path import Path
+
+from discogui.draw import draw_indexed_rect_list
 
 log = logging.getLogger(__name__)
 

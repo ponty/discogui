@@ -1,7 +1,8 @@
+import pyscreenshot
+
 from discogui import imglog
 from discogui.mouse import PyMouse
 from discogui.screenrect import ScreenRect
-import pyscreenshot
 
 
 def getbbox(img, outside=False):

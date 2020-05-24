@@ -3,9 +3,9 @@ drawing rectangles for debugging
 """
 
 
+from PIL import Image, ImageDraw
+
 from discogui.screenrect import ScreenRect
-from PIL import Image
-from PIL import ImageDraw
 
 
 def draw_textrect(im, rect, text=None, color="red"):

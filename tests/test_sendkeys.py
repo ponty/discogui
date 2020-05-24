@@ -1,10 +1,12 @@
-from discogui.imgutil import getbbox, focus_wnd
-from pykeyboard import PyKeyboard
+from time import sleep
+from unittest import TestCase
+
 from easyprocess import EasyProcess
+from pykeyboard import PyKeyboard
 from pyscreenshot import grab
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-from unittest import TestCase
-from time import sleep
+
+from discogui.imgutil import focus_wnd, getbbox
 
 VISIBLE = 0
 

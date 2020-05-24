@@ -1,7 +1,6 @@
 import os
 import sys
 
-
 project = "discogui"
 author = "ponty"
 copyright = "2011, ponty"

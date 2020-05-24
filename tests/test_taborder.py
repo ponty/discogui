@@ -1,8 +1,9 @@
-from discogui.imgutil import EmptyScreenException
-from discogui.taborder import tab_rectangles
+from unittest import TestCase
+
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-from unittest import TestCase
+
+from discogui.taborder import tab_rectangles
 
 
 class Test(TestCase):

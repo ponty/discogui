@@ -1,5 +1,6 @@
-import pymouse
 import sys
+
+import pymouse
 
 
 def PyMouse():

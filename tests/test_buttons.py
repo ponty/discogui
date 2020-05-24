@@ -1,7 +1,8 @@
-from discogui.buttons import discover_buttons
 from easyprocess import EasyProcess
 from nose.tools import eq_
 from pyvirtualdisplay.smartdisplay import SmartDisplay
+
+from discogui.buttons import discover_buttons
 
 
 def test_zenity():

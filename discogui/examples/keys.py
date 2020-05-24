@@ -1,10 +1,12 @@
-from easyprocess import EasyProcess
-from pyscreenshot import grab
-from discogui.imgutil import autocrop, focus_wnd
-from pykeyboard import PyKeyboard
-from pyvirtualdisplay import Display
 from time import sleep
+
+from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
+from pykeyboard import PyKeyboard
+from pyscreenshot import grab
+from pyvirtualdisplay import Display
+
+from discogui.imgutil import autocrop, focus_wnd
 
 CALCULATORS = """
 gnome-calculator
@@ -33,4 +35,3 @@ def main():
             img = autocrop(grab())
 
     img.show()
-

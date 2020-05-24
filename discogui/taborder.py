@@ -8,17 +8,16 @@ and comparing the image with the original.
 
 """
 
-from discogui.imglog import img_log, img_log_rects
-from discogui.imgutil import getbbox, focus_wnd
-from discogui.screenrect import ScreenRect
-from pykeyboard import PyKeyboard
-from PIL import ImageChops
-from PIL import ImageFilter
-from PIL import ImageStat
 import logging
 from time import sleep
-import pyscreenshot
 
+import pyscreenshot
+from PIL import ImageChops, ImageFilter, ImageStat
+from pykeyboard import PyKeyboard
+
+from discogui.imglog import img_log, img_log_rects
+from discogui.imgutil import focus_wnd, getbbox
+from discogui.screenrect import ScreenRect
 
 log = logging.getLogger(__name__)
 

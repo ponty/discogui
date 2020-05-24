@@ -4,10 +4,12 @@
 3. print rectangles
 """
 from time import sleep
-from discogui.buttons import discover_buttons
+
 from easyprocess import EasyProcess
-from pyvirtualdisplay import Display
 from entrypoint2 import entrypoint
+from pyvirtualdisplay import Display
+
+from discogui.buttons import discover_buttons
 
 
 @entrypoint
@@ -17,4 +19,3 @@ def main():
             sleep(5)
             buttons = discover_buttons()
     print(buttons)
-

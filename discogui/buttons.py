@@ -13,11 +13,12 @@ Try to find buttons on the window.
 
 """
 
+import logging
+
 from discogui import hover
 from discogui.imglog import img_log_rects
 from discogui.imgutil import focus_wnd
 from discogui.taborder import tab_rectangles
-import logging
 
 log = logging.getLogger(__name__)
 

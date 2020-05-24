@@ -1,7 +1,9 @@
-from discogui.hover import active_rectangles
+from unittest import TestCase
+
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-from unittest import TestCase
+
+from discogui.hover import active_rectangles
 
 
 class Test(TestCase):

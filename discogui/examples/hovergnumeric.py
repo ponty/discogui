@@ -4,12 +4,13 @@
 3. print rectangles
 4. draw red rectangles on screenshot
 """
+from easyprocess import EasyProcess
+from entrypoint2 import entrypoint
+from pyvirtualdisplay.smartdisplay import SmartDisplay
+
 from discogui.draw import draw_indexed_rect_list
 from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
-from easyprocess import EasyProcess
-from pyvirtualdisplay.smartdisplay import SmartDisplay
-from entrypoint2 import entrypoint
 
 
 @entrypoint
@@ -24,6 +25,3 @@ def main():
 
     # display results
     img.show()
-
-
-

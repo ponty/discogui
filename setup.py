@@ -1,7 +1,6 @@
-from setuptools import setup
 import os.path
-import sys
 
+from setuptools import setup
 
 NAME = "discogui"
 URL = "https://github.com/ponty/discogui"
