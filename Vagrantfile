@@ -82,20 +82,14 @@ Vagrant.configure(2) do |config|
 # tools
   sudo apt-get install -y mc python-pip python3-pip xvfb xserver-xephyr scrot
  
-# project dependencies
-  sudo pip  install -r /vagrant/requirements.txt
-  sudo pip3 install -r /vagrant/requirements.txt
-
 # test dependencies
-  sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric imagemagick
-  #sudo pip  install -r /vagrant/requirements-test.txt
-  #sudo pip3 install -r /vagrant/requirements-test.txt
+  sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric
   sudo pip3 install tox
   
 # doc dependencies
-  sudo pip  install -r /vagrant/requirements-doc.txt
-  sudo pip3 install -r /vagrant/requirements-doc.txt
-  
+  sudo apt-get install -y npm
+  sudo npm install -g npx
+
   "
       config.vm.provision "shell", inline: $script
           

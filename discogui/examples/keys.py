@@ -23,10 +23,11 @@ def find_calculator():
 
 @entrypoint
 def main():
-    with Display(visible=0):
+    with Display(visible=0) as disp:
         with EasyProcess(find_calculator()):
             # wait for displaying the window
-            sleep(0.5)
+            disp.waitgrab()
+
             focus_wnd()
             k = PyKeyboard()
             k.type_string("2*2=")
@@ -34,4 +35,4 @@ def main():
             sleep(0.5)
             img = autocrop(grab())
 
-    img.show()
+    img.save("calculator-usage.png")

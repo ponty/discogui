@@ -3,17 +3,23 @@ import os.path
 from setuptools import setup
 
 NAME = "discogui"
-URL = "https://github.com/ponty/discogui"
-DESCRIPTION = "GUI discovery"
-PACKAGES = [
-    "discogui",
-    "discogui.examples",
-]
 
 # get __version__
 __version__ = None
 exec(open(os.path.join(NAME, "about.py")).read())
 VERSION = __version__
+
+URL = "https://github.com/ponty/discogui"
+DESCRIPTION = "GUI discovery"
+LONG_DESCRIPTION = """discogui discovers GUI elements
+
+Documentation: https://github.com/ponty/discogui/tree/"""
+LONG_DESCRIPTION += VERSION
+PACKAGES = [
+    "discogui",
+    "discogui.examples",
+]
+
 
 # extra = {}
 # if sys.version_info >= (3,):
@@ -40,7 +46,7 @@ setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
-    long_description=open("README.rst", "r").read(),
+    long_description=LONG_DESCRIPTION,
     classifiers=classifiers,
     keywords="GUI",
     author="ponty",

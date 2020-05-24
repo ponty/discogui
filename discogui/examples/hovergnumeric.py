@@ -23,5 +23,5 @@ def main():
     img = draw_indexed_rect_list(img, rectangles)
     img = autocrop(img)
 
-    # display results
-    img.show()
+    # save results
+    img.save("gnumeric-buttons.png")
