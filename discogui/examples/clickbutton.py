@@ -23,6 +23,6 @@ def click_button_get_return_code(which_button):
 def main():
     with Display():
         print(click_button_get_return_code(0))
+    with Display():
         print(click_button_get_return_code(1))
-
 
