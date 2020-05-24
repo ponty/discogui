@@ -9,8 +9,10 @@ from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
+from entrypoint2 import entrypoint
 
 
+@entrypoint
 def main():
     with SmartDisplay(size=(640, 480), visible=0) as disp:
         with EasyProcess("gnumeric"):
@@ -24,5 +26,4 @@ def main():
     img.show()
 
 
-if __name__ == "__main__":
-    main()
+

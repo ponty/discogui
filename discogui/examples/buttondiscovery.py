@@ -11,8 +11,10 @@ from discogui.buttons import discover_buttons
 from discogui.draw import draw_indexed_rect_list
 from discogui.imgutil import autocrop
 from pyvirtualdisplay import Display
+from entrypoint2 import entrypoint
 
 
+@entrypoint
 def main():
     with Display(visible=0):
         with EasyProcess("zenity --question"):
@@ -27,6 +29,3 @@ def main():
     # display results
     img.show()
 
-
-if __name__ == "__main__":
-    main()

@@ -4,6 +4,7 @@ from discogui.imgutil import autocrop, focus_wnd
 from pykeyboard import PyKeyboard
 from pyvirtualdisplay import Display
 from time import sleep
+from entrypoint2 import entrypoint
 
 CALCULATORS = """
 gnome-calculator
@@ -18,6 +19,7 @@ def find_calculator():
     raise ValueError("no calculator found!")
 
 
+@entrypoint
 def main():
     with Display(visible=0):
         with EasyProcess(find_calculator()):
@@ -32,6 +34,3 @@ def main():
 
     img.show()
 
-
-if __name__ == "__main__":
-    main()

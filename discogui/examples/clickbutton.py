@@ -9,6 +9,7 @@ from discogui.mouse import PyMouse
 from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
 from time import sleep
+from entrypoint2 import entrypoint
 
 
 def click_button_get_return_code(which_button):
@@ -18,12 +19,10 @@ def click_button_get_return_code(which_button):
         PyMouse().click(*rectangles[which_button].center)
         return p.wait().return_code
 
-
+@entrypoint
 def main():
     with Display():
         print(click_button_get_return_code(0))
         print(click_button_get_return_code(1))
 
 
-if __name__ == "__main__":
-    main()

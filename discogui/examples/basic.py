@@ -7,8 +7,10 @@ from time import sleep
 from discogui.buttons import discover_buttons
 from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
+from entrypoint2 import entrypoint
 
 
+@entrypoint
 def main():
     with Display(visible=0):
         with EasyProcess("zenity --question"):
@@ -16,6 +18,3 @@ def main():
             buttons = discover_buttons()
     print(buttons)
 
-
-if __name__ == "__main__":
-    main()
