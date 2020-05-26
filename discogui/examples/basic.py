@@ -3,11 +3,9 @@
 2. discover buttons using :mod:`discogui.buttons` module
 3. print rectangles
 """
-from time import sleep
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from pyvirtualdisplay import Display
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons

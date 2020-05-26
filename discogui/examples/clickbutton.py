@@ -4,11 +4,9 @@
 3. click first button, print return code
 4. click second button, print return code
 """
-from time import sleep
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from pyvirtualdisplay import Display
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons

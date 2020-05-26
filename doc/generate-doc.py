@@ -3,7 +3,6 @@ import os
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 # (cmd,grab,background)

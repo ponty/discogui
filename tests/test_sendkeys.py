@@ -1,11 +1,9 @@
-from time import sleep
-
 from easyprocess import EasyProcess
 from pykeyboard import PyKeyboard
 from pyscreenshot import grab
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
-from discogui.imgutil import focus_wnd, getbbox
+from discogui.imgutil import getbbox
 
 VISIBLE = 0
 

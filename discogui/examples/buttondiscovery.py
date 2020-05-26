@@ -4,11 +4,9 @@
 3. print rectangles
 4. draw red rectangles on screenshot
 """
-from time import sleep
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from pyscreenshot import grab
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
