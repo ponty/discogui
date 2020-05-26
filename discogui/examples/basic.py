@@ -8,14 +8,15 @@ from time import sleep
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
 
 
 @entrypoint
 def main():
-    with Display(visible=0):
+    with SmartDisplay(visible=0) as disp:
         with EasyProcess("zenity --question"):
-            sleep(5)
+            disp.waitgrab(timeout=60)
             buttons = discover_buttons()
     print(buttons)

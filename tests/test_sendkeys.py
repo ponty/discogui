@@ -34,12 +34,12 @@ def test_zenity():
             assert getbbox(grab())
 
 
-def test_gcalctool1():
-    with SmartDisplay() as disp:
-        with EasyProcess("gnome-calculator"):
-            disp.waitgrab()
-            focus_wnd()
-            k = PyKeyboard()
-            k.press_keys([k.control_key, "q"])
-            sleep(1)
-            assert not getbbox(grab())
+# def test_gcalctool1():
+#     with SmartDisplay() as disp:
+#         with EasyProcess("gnome-calculator"):
+#             disp.waitgrab()
+#             focus_wnd()
+#             k = PyKeyboard()
+#             k.press_keys([k.control_key, "q"])
+#             sleep(1)
+#             assert not getbbox(grab())

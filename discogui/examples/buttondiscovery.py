@@ -9,7 +9,7 @@ from time import sleep
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyscreenshot import grab
-from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
 from discogui.draw import draw_indexed_rect_list
@@ -18,10 +18,9 @@ from discogui.imgutil import autocrop
 
 @entrypoint
 def main():
-    with Display(visible=0):
+    with SmartDisplay(visible=0) as disp:
         with EasyProcess("zenity --question"):
-            sleep(1)
-            img = grab()
+            img = disp.waitgrab(timeout=60)
             rectangles = discover_buttons()
             print(rectangles)
 

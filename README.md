@@ -44,15 +44,16 @@ from time import sleep
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
 
 
 @entrypoint
 def main():
-    with Display(visible=0):
+    with SmartDisplay(visible=0) as disp:
         with EasyProcess("zenity --question"):
-            sleep(5)
+            disp.waitgrab(timeout=60)
             buttons = discover_buttons()
     print(buttons)
 
@@ -82,7 +83,7 @@ from time import sleep
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyscreenshot import grab
-from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
 from discogui.draw import draw_indexed_rect_list
@@ -91,10 +92,9 @@ from discogui.imgutil import autocrop
 
 @entrypoint
 def main():
-    with Display(visible=0):
+    with SmartDisplay(visible=0) as disp:
         with EasyProcess("zenity --question"):
-            sleep(1)
-            img = grab()
+            img = disp.waitgrab(timeout=60)
             rectangles = discover_buttons()
             print(rectangles)
 
@@ -102,7 +102,7 @@ def main():
     img = autocrop(img)
 
     # save results
-    img.save('zenity-buttons.png')
+    img.save("zenity-buttons.png")
 
 ```
 
@@ -183,14 +183,15 @@ from time import sleep
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
 from discogui.mouse import PyMouse
 
 
-def click_button_get_return_code(which_button):
+def click_button_get_return_code(disp, which_button):
     with EasyProcess("zenity --question") as p:
-        sleep(1)
+        disp.waitgrab(timeout=60)
         rectangles = discover_buttons()
         PyMouse().click(*rectangles[which_button].center)
         return p.wait().return_code
@@ -198,10 +199,10 @@ def click_button_get_return_code(which_button):
 
 @entrypoint
 def main():
-    with Display():
-        print(click_button_get_return_code(0))
-    with Display():
-        print(click_button_get_return_code(1))
+    with SmartDisplay() as disp:
+        print(click_button_get_return_code(disp, 0))
+    with SmartDisplay() as disp:
+        print(click_button_get_return_code(disp, 1))
 
 ```
 
