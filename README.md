@@ -28,37 +28,6 @@ $ python3 -m pip install discogui
 Usage
 =====
 
-basic
------
-
-```py
-# discogui/examples/basic.py
-
-"""
-1. start zenity Yes/No dialog on Xvfb
-2. discover buttons using `discogui.buttons` module
-3. print rectangles
-"""
-
-from easyprocess import EasyProcess
-from pyvirtualdisplay.smartdisplay import SmartDisplay
-
-from discogui.buttons import discover_buttons
-
-with SmartDisplay(visible=0) as disp:
-    with EasyProcess("zenity --question"):
-        disp.waitgrab(timeout=60)
-        buttons = discover_buttons()
-print(buttons)
-
-```     
-    
-<!-- embedme doc/gen/python3_-m_discogui.examples.basic.txt -->
-Run it:
-```console
-$ python3 -m discogui.examples.basic
-[ScreenRect((427,416,510,446)), ScreenRect((516,416,599,446))]
-```
 
 button discovery on zenity
 --------------------------

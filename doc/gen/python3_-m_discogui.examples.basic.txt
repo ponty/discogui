@@ -1,2 +1,0 @@
-$ python3 -m discogui.examples.basic
-[ScreenRect((427,416,510,446)), ScreenRect((516,416,599,446))]

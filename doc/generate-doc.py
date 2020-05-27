@@ -7,7 +7,6 @@ from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 # (cmd,grab,background)
 commands = [
-    "python3 -m discogui.examples.basic",
     "python3 -m discogui.examples.buttondiscovery",
     "python3 -m discogui.examples.hovergnumeric",
     "python3 -m discogui.examples.clickbutton",
