@@ -1,4 +1,4 @@
-``discogui`` discovers GUI elements
+Experimental Python library for discovering GUI elements.
 
 Links:
  * home: https://github.com/ponty/discogui

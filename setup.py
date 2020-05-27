@@ -11,7 +11,7 @@ VERSION = __version__
 
 URL = "https://github.com/ponty/discogui"
 DESCRIPTION = "GUI discovery"
-LONG_DESCRIPTION = """discogui discovers GUI elements
+LONG_DESCRIPTION = """Experimental Python library for discovering GUI elements.
 
 Documentation: https://github.com/ponty/discogui/tree/"""
 LONG_DESCRIPTION += VERSION
