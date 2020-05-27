@@ -51,7 +51,7 @@ from discogui.imgutil import autocrop
 
 with SmartDisplay(visible=0) as disp:
     with EasyProcess("zenity --question"):
-        img = disp.waitgrab(timeout=60)
+        img = disp.waitgrab(timeout=60, autocrop=False)
         rectangles = discover_buttons()
         print(rectangles)
 
