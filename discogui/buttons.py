@@ -1,11 +1,11 @@
 """
 Try to find buttons on the window.
 
-1. get controls by :mod:`discogui.taborder`
-2. test controls with :mod:`discogui.hover`, if control is active
+1. get controls by `discogui.taborder`
+2. test controls with `discogui.hover`, if control is active
         -> it is identified as a button
 3. no controls by tab order -> only 1 button on window
-        -> test whole window by :mod:`discogui.hover`
+        -> test whole window by `discogui.hover`
 
 .. note::
      It does not work if the GUI changes during the scan.

@@ -1,12 +1,11 @@
 """
 1. start zenity Yes/No dialog on Xvfb
-2. discover buttons using :mod:`discogui.buttons` module
+2. discover buttons using `discogui.buttons` module
 3. click first button, print return code
 4. click second button, print return code
 """
 
 from easyprocess import EasyProcess
-from entrypoint2 import entrypoint
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 from discogui.buttons import discover_buttons
@@ -21,9 +20,7 @@ def click_button_get_return_code(disp, which_button):
         return p.wait().return_code
 
 
-@entrypoint
-def main():
-    with SmartDisplay() as disp:
-        print(click_button_get_return_code(disp, 0))
-    with SmartDisplay() as disp:
-        print(click_button_get_return_code(disp, 1))
+with SmartDisplay() as disp:
+    print(click_button_get_return_code(disp, 0))
+with SmartDisplay() as disp:
+    print(click_button_get_return_code(disp, 1))
