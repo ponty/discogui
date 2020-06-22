@@ -92,6 +92,8 @@ Vagrant.configure(2) do |config|
 
   "
       config.vm.provision "shell", inline: $script
+
+      config.ssh.extra_args = ["-t", "cd /vagrant; bash --login"]       
           
 
        
