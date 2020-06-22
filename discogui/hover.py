@@ -42,7 +42,7 @@ def is_point_active(img_orig, point, mouse=None):
     log.debug("point:" + str(point))
 
     mouse.move(point[0], point[1])
-    sleep(0.2)
+    sleep(1)
     img_hover = pyscreenshot.grab()
     mouse.move(0, 0)
 
