@@ -24,6 +24,8 @@ def run_mod(mod, cwd, stdout=None):
 
 def test_examples():
     with TemporaryDirectory() as tmpdirname:
-        run_mod("discogui.examples.buttondiscovery", tmpdirname,)
+        run_mod(
+            "discogui.examples.buttondiscovery", tmpdirname,
+        )
         run_mod("discogui.examples.hovergnumeric", tmpdirname)
         run_mod("discogui.examples.clickbutton", tmpdirname, stdout_clickbutton)
