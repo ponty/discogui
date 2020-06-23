@@ -1,3 +1,4 @@
+import glob
 import logging
 import os
 
@@ -13,8 +14,17 @@ commands = [
 ]
 
 
+def empty_dir(dir):
+    files = glob.glob(os.path.join(dir, "*"))
+    for f in files:
+        os.remove(f)
+
+
 @entrypoint
 def main():
+    gendir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen")
+    logging.info("gendir: %s", gendir)
+    empty_dir(gendir)
     pls = []
     try:
         os.chdir("gen")
