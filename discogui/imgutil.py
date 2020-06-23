@@ -44,7 +44,7 @@ def focus_wnd():
     """
     move mouse over window to get focus
     """
-    rct_wnd = getbbox(pyscreenshot.grab())
+    rct_wnd = getbbox(grab())
     if not rct_wnd:
         raise EmptyScreenException("Empty screen!")
 
@@ -54,6 +54,11 @@ def focus_wnd():
     mouse = PyMouse()
     mouse.move(*rct_wnd.topleft)
 
-    img_orig = pyscreenshot.grab()
+    img_orig = grab()
     imglog.img_log(img_orig, "img_orig")
     return img_orig
+
+
+def grab():
+    return pyscreenshot.grab(childprocess=True)
+

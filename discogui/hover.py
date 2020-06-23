@@ -13,11 +13,10 @@ It can be slow if grid is small or the window is large.
 import logging
 from time import sleep
 
-import pyscreenshot
 from PIL import ImageChops
 
 from discogui.imglog import img_log, img_log_rects
-from discogui.imgutil import focus_wnd, getbbox
+from discogui.imgutil import focus_wnd, getbbox, grab
 from discogui.mouse import PyMouse
 
 log = logging.getLogger(__name__)
@@ -43,7 +42,7 @@ def is_point_active(img_orig, point, mouse=None):
 
     mouse.move(point[0], point[1])
     sleep(1)
-    img_hover = pyscreenshot.grab()
+    img_hover = grab()
     mouse.move(0, 0)
 
     # img_log(img_hover, 'img_hover')

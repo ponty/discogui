@@ -2,10 +2,9 @@ from time import sleep
 
 from easyprocess import EasyProcess
 from pykeyboard import PyKeyboard
-from pyscreenshot import grab
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
-from discogui.imgutil import getbbox
+from discogui.imgutil import getbbox, grab
 
 VISIBLE = 0
 
