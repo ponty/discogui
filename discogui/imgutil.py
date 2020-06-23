@@ -1,3 +1,4 @@
+import logging
 import time
 from time import sleep
 
@@ -5,8 +6,11 @@ import pyscreenshot
 from PIL import ImageChops
 
 from discogui import imglog
+from discogui.imglog import img_log
 from discogui.mouse import PyMouse
 from discogui.screenrect import ScreenRect
+
+log = logging.getLogger(__name__)
 
 
 def getbbox(img, outside=False):
@@ -87,6 +91,11 @@ def _grab_and_sleep(blink_time):
 
 def grab_no_blink(blink_time=1.2, crop=True):
     # find at least one frame with caret on and one with caret off
+
+    # randomly fails without sleep: 20/100
+    #    python3 -m pytest -v tests/test_blink.py::test_blink -n 10 --count 100
+    sleep(1)
+
     lsim = [_grab_and_sleep(blink_time) for _ in range(4)]
     im = img_list_min(lsim)
     if crop:
@@ -94,22 +103,56 @@ def grab_no_blink(blink_time=1.2, crop=True):
     return im
 
 
+# def grab_no_blink(blink_time=1.2, crop=True):
+#     start = time.time()
+#     lsim = []
+#     while (time.time() - start) < blink_time:
+#         im = grab()
+#         lsim.append(im)
+
+#     im = img_list_min(lsim)
+#     if crop:
+#         im = autocrop(im)
+#     return im
+
+
 def img_eq(im1, im2):
     diff = ImageChops.difference(im1, im2)
+    img_log(im1, "eq1")
+    img_log(im2, "eq2")
+    img_log(diff, "eqdiff")
     bbox = diff.getbbox()
-    print(diff.getbbox())
+    log.debug(diff.getbbox())
     return bbox is None
 
 
+# def img_list_min(ls):
+#     imref = ls[0]
+#     for im in ls[1:]:
+#         diffabs = ImageChops.difference(imref, im)
+#         bbox = diffabs.getbbox()
+#         if bbox:
+#             diff = ImageChops.subtract(imref, im)
+#             if img_eq(diffabs, diff):
+#                 return imref
+#             else:
+#                 return im
+#     return imref
+
+
 def img_list_min(ls):
-    imref = ls[0]
+    immin = ls[0]
+    img_log(immin, "min")
     for im in ls[1:]:
-        diffabs = ImageChops.difference(imref, im)
-        bbox = diffabs.getbbox()
-        if bbox:
-            diff = ImageChops.subtract(imref, im)
-            if img_eq(diffabs, diff):
-                return im
-            else:
-                return imref
-    return imref
+        img_log(im, "min")
+        diff = ImageChops.subtract(immin, im)
+        immin = ImageChops.subtract(immin, diff)
+    return immin
+
+
+# def img_list_min(ls): #max
+#     immin = ls[0]
+#     for im in ls[1:]:
+#         diff = ImageChops.subtract(im,immin)
+#         immin = ImageChops.add(immin, diff)
+#     return immin
