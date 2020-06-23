@@ -70,9 +70,9 @@ def grab():
 
 
 def _grab_and_sleep(blink_time):
-    start = time.process_time()
+    start = time.time()
     im = grab()
-    dt = time.process_time() - start
+    dt = time.time() - start
     t = blink_time / 4 - dt
     assert t > 0
     # while t < 0:
