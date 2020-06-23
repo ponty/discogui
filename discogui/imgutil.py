@@ -60,6 +60,10 @@ def focus_wnd():
     mouse = PyMouse()
     mouse.move(*rct_wnd.topleft)
 
+    # time to take effect
+    # gmessage fails without this
+    sleep(0.3)
+
     img_orig = grab()
     imglog.img_log(img_orig, "img_orig")
     return img_orig
