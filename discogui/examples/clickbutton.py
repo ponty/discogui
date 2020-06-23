@@ -13,7 +13,7 @@ from discogui.mouse import PyMouse
 
 
 def click_button_get_return_code(disp, which_button):
-    with EasyProcess("zenity --question") as p:
+    with EasyProcess(["zenity", "--question"]) as p:
         disp.waitgrab(timeout=60)
         rectangles = discover_buttons()
         PyMouse().click(*rectangles[which_button].center)

@@ -12,7 +12,7 @@ from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
 
 with SmartDisplay(size=(640, 480), visible=0) as disp:
-    with EasyProcess("gnumeric"):
+    with EasyProcess(["gnumeric"]):
         img = disp.waitgrab(timeout=60)
         rectangles = active_rectangles()
         print(rectangles)

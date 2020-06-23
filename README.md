@@ -50,7 +50,7 @@ from discogui.draw import draw_indexed_rect_list
 from discogui.imgutil import autocrop
 
 with SmartDisplay(visible=0) as disp:
-    with EasyProcess("zenity --question"):
+    with EasyProcess(["zenity", "--question"]):
         img = disp.waitgrab(timeout=60, autocrop=False)
         rectangles = discover_buttons()
         print(rectangles)
@@ -95,7 +95,7 @@ from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
 
 with SmartDisplay(size=(640, 480), visible=0) as disp:
-    with EasyProcess("gnumeric"):
+    with EasyProcess(["gnumeric"]):
         img = disp.waitgrab(timeout=60)
         rectangles = active_rectangles()
         print(rectangles)
@@ -140,7 +140,7 @@ from discogui.mouse import PyMouse
 
 
 def click_button_get_return_code(disp, which_button):
-    with EasyProcess("zenity --question") as p:
+    with EasyProcess(["zenity", "--question"]) as p:
         disp.waitgrab(timeout=60)
         rectangles = discover_buttons()
         PyMouse().click(*rectangles[which_button].center)

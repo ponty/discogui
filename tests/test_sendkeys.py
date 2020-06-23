@@ -11,26 +11,26 @@ VISIBLE = 0
 
 def test_zenity():
     with SmartDisplay(visible=VISIBLE) as disp:
-        with EasyProcess("zenity --warning"):
+        with EasyProcess(["zenity", "--warning"]):
             disp.waitgrab()
             k = PyKeyboard()
             k.tap_key(k.enter_key)
             sleep(0.1)  # wait for processing keyboard event
             assert not getbbox(grab())
 
-        with EasyProcess("zenity --warning"):
+        with EasyProcess(["zenity", "--warning"]):
             disp.waitgrab()
             k.tap_key(k.enter_key)
             sleep(0.1)  # wait for processing keyboard event
             assert not getbbox(grab())
 
-        with EasyProcess("zenity --warning"):
+        with EasyProcess(["zenity", "--warning"]):
             disp.waitgrab()
             k.tap_key(" ")
             sleep(0.1)  # wait for processing keyboard event
             assert not getbbox(grab())
 
-        with EasyProcess("zenity --warning"):
+        with EasyProcess(["zenity", "--warning"]):
             disp.waitgrab()
             k.tap_key("x")
             sleep(0.1)  # wait for processing keyboard event
@@ -39,7 +39,7 @@ def test_zenity():
 
 # def test_gcalctool1():
 #     with SmartDisplay() as disp:
-#         with EasyProcess("gnome-calculator"):
+#         with EasyProcess(["gnome-calculator"]):
 #             disp.waitgrab()
 #             focus_wnd()
 #             k = PyKeyboard()
