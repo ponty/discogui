@@ -8,7 +8,8 @@ from discogui.screenrect import ScreenRect
 def getbbox(img, outside=False):
     """
     Get bounding box.
-    PIL getbbox() is not symmetrical on left/right.
+    PIL getbbox() was not symmetrical on left/right.
+    It is OK in latest version.
 
     outside=0 -> box contains edges
     outside=1 -> box does not contain edges
@@ -21,11 +22,12 @@ def getbbox(img, outside=False):
     if bbox:
         bbox = ScreenRect(bbox)
         if outside:
-            bbox.left -= 1
-            bbox.top -= 1
-        else:
-            bbox.right += 1
-            bbox.bottom += 1
+            bbox = bbox.add_border()
+        #     bbox.left -= 1
+        #     bbox.top -= 1
+        # else:
+        #     bbox.right += 1
+        #     bbox.bottom += 1
         return bbox
 
 
