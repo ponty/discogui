@@ -1,2 +1,2 @@
 $ python3 -m discogui.examples.buttondiscovery
-[ScreenRect((427,416,510,446)), ScreenRect((516,416,599,446))]
+[ScreenRect((426,415,509,445)), ScreenRect((515,415,598,445))]
