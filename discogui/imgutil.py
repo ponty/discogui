@@ -1,4 +1,8 @@
+import time
+from time import sleep
+
 import pyscreenshot
+from PIL import ImageChops
 
 from discogui import imglog
 from discogui.mouse import PyMouse
@@ -64,3 +68,44 @@ def focus_wnd():
 def grab():
     return pyscreenshot.grab(childprocess=True)
 
+
+def _grab_and_sleep(blink_time):
+    start = time.process_time()
+    im = grab()
+    dt = time.process_time() - start
+    t = blink_time / 4 - dt
+    assert t > 0
+    # while t < 0:
+    #     t += blink_time
+    sleep(t)
+    return im
+
+
+def grab_no_blink(blink_time=1.2, crop=True):
+    # find at least one frame with caret on and one with caret off
+    lsim = [_grab_and_sleep(blink_time) for _ in range(4)]
+    im = img_list_min(lsim)
+    if crop:
+        im = autocrop(im)
+    return im
+
+
+def img_eq(im1, im2):
+    diff = ImageChops.difference(im1, im2)
+    bbox = diff.getbbox()
+    print(diff.getbbox())
+    return bbox is None
+
+
+def img_list_min(ls):
+    imref = ls[0]
+    for im in ls[1:]:
+        diffabs = ImageChops.difference(imref, im)
+        bbox = diffabs.getbbox()
+        if bbox:
+            diff = ImageChops.subtract(imref, im)
+            if img_eq(diffabs, diff):
+                return im
+            else:
+                return imref
+    return imref
