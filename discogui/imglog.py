@@ -35,7 +35,7 @@ def img_log(im, text):
         im = im.crop(CROP_RECT)
     fname = str(img_dir / str(img_ind) + "_" + text + ".png")
     im.save(fname)
-    log.debug("image was saved:" + fname)
+    log.debug("image was saved: " + fname)
     img_ind += 1
 
 
