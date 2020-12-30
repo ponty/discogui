@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/focal64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -49,7 +49,11 @@ Vagrant.configure(2) do |config|
   #
      # Customize the amount of memory on the VM:
       vb.memory = "1024"
-      vb.name = "discogui_1804"
+      vb.name = "discogui_2004"
+
+    # 	https://bugs.launchpad.net/cloud-images/+bug/1829625
+    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+    vb.customize ["modifyvm", :id, "--uartmode1", "file", "./ttyS0.log"]
     end
   #
   # View the documentation for the provider you are using for more
@@ -81,11 +85,13 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3.9-distutils
   
 # tools
-  sudo apt-get install -y mc python-pip python3-pip xvfb xserver-xephyr scrot
- 
+  sudo apt-get install -y mc xvfb
+  sudo apt-get install -y python3-pip
+  sudo pip3 install -U pip
+   
 # test dependencies
   sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils
-  sudo pip3 install tox
+  sudo pip3 install -U tox
   
 # doc dependencies
   sudo apt-get install -y npm
