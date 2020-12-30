@@ -29,19 +29,18 @@ Usage
 =====
 
 
-button discovery on zenity
---------------------------
+button discovery on zenity using tab order
+------------------------------------------
 
 ```py
-# discogui/examples/buttondiscovery.py
+# discogui/examples/taborder.py
 
 """
 1. start zenity Yes/No dialog on Xvfb
-2. discover buttons using `discogui.buttons` module
+2. discover buttons using tab order
 3. print rectangles
 4. draw red rectangles on screenshot
 """
-
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
@@ -59,31 +58,30 @@ img = draw_indexed_rect_list(img, rectangles)
 img = autocrop(img)
 
 # save results
-img.save("zenity-buttons.png")
+img.save("taborder.png")
 
 ```
 
-<!-- embedme doc/gen/python3_-m_discogui.examples.buttondiscovery.txt -->
+<!-- embedme doc/gen/python3_-m_discogui.examples.taborder.txt -->
 Run it:
 ```console
-$ python3 -m discogui.examples.buttondiscovery
-[ScreenRect((426,415,509,445)), ScreenRect((515,415,598,445))]
+$ python3 -m discogui.examples.taborder
 ```
 
 Image:
 
-![](/doc/gen/zenity-buttons.png)
+![](/doc/gen/taborder.png)
 
 
-button discovery on gnumeric
-----------------------------
+button discovery on zenity using mouse hovering
+-----------------------------------------------
 
 ```py
-# discogui/examples/hovergnumeric.py
+# discogui/examples/hover.py
 
 """
-1. start gnumeric on Xvfb with low ersolution
-2. discover buttons using `discogui.hover` module
+1. start zenity Yes/No dialog on Xvfb
+2. discover buttons using mouse hovering
 3. print rectangles
 4. draw red rectangles on screenshot
 """
@@ -95,29 +93,28 @@ from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
 
 with SmartDisplay(size=(640, 480), visible=0) as disp:
-    with EasyProcess(["gnumeric"]):
-        img = disp.waitgrab(timeout=60)
+    with EasyProcess(["zenity", "--question"]):
+        img = disp.waitgrab(timeout=60, autocrop=False)
         rectangles = active_rectangles()
         print(rectangles)
 img = draw_indexed_rect_list(img, rectangles)
 img = autocrop(img)
 
 # save results
-img.save("gnumeric-buttons.png")
+img.save("hover.png")
 
 ```
 
-<!-- embedme doc/gen/python3_-m_discogui.examples.hovergnumeric.txt -->
+<!-- embedme doc/gen/python3_-m_discogui.examples.hover.txt -->
 Run it:
 ```console
-$ python3 -m discogui.examples.hovergnumeric
-[ScreenRect((4,29,38,63)), ScreenRect((39,29,73,63)), ScreenRect((74,29,108,63)), ScreenRect((123,29,157,63)), ScreenRect((158,29,192,63)), ScreenRect((207,29,241,63)), ScreenRect((242,29,276,63)), ScreenRect((277,29,311,63)), ScreenRect((447,29,481,64)), ScreenRect((4,71,103,105)), ScreenRect((104,71,138,105)), ScreenRect((139,71,173,105)), ScreenRect((174,71,208,105)), ScreenRect((223,71,257,105)), ScreenRect((258,71,292,105)), ScreenRect((293,71,327,105)), ScreenRect((328,71,362,105)), ScreenRect((363,71,397,105)), ScreenRect((398,71,432,105)), ScreenRect((447,71,481,106)), ScreenRect((4,113,38,147)), ScreenRect((39,113,73,147)), ScreenRect((74,113,108,147)), ScreenRect((109,113,143,147)), ScreenRect((144,113,178,147)), ScreenRect((179,113,213,147)), ScreenRect((214,113,248,147)), ScreenRect((249,113,283,147)), ScreenRect((284,113,318,147)), ScreenRect((319,113,353,147)), ScreenRect((354,113,388,147)), ScreenRect((389,113,423,147)), ScreenRect((424,113,458,147)), ScreenRect((277,155,311,189)), ScreenRect((57,310,469,316)), ScreenRect((0,322,58,359))]
+$ python3 -m discogui.examples.hover
 ```
 
 
 Image:
 
-![](/doc/gen/gnumeric-buttons.png)
+![](/doc/gen/hover.png)
 
 button test
 -----------
