@@ -6,10 +6,9 @@ from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
-# (cmd,grab,background)
 commands = [
-    "python3 -m discogui.examples.buttondiscovery",
-    "python3 -m discogui.examples.hovergnumeric",
+    "python3 -m discogui.examples.taborder",
+    "python3 -m discogui.examples.hover",
     "python3 -m discogui.examples.clickbutton",
 ]
 

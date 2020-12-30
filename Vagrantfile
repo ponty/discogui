@@ -48,8 +48,9 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
      # Customize the amount of memory on the VM:
-     vb.memory = "1024"
-   end
+      vb.memory = "1024"
+      vb.name = "discogui_1804"
+    end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -83,7 +84,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y mc python-pip python3-pip xvfb xserver-xephyr scrot
  
 # test dependencies
-  sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils gnumeric
+  sudo apt-get install -y zenity gnome-calculator gxmessage x11-utils
   sudo pip3 install tox
   
 # doc dependencies

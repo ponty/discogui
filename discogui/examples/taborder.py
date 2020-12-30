@@ -1,23 +1,24 @@
 """
-1. start gnumeric on Xvfb with low ersolution
-2. discover buttons using `discogui.hover` module
+1. start zenity Yes/No dialog on Xvfb
+2. discover buttons using tab order
 3. print rectangles
 4. draw red rectangles on screenshot
 """
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
+from discogui.buttons import discover_buttons
 from discogui.draw import draw_indexed_rect_list
-from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
 
-with SmartDisplay(size=(640, 480), visible=0) as disp:
-    with EasyProcess(["gnumeric"]):
-        img = disp.waitgrab(timeout=60)
-        rectangles = active_rectangles()
+with SmartDisplay(visible=1) as disp:
+    with EasyProcess(["zenity", "--question"]):
+        img = disp.waitgrab(timeout=60, autocrop=False)
+        rectangles = discover_buttons()
         print(rectangles)
+
 img = draw_indexed_rect_list(img, rectangles)
 img = autocrop(img)
 
 # save results
-img.save("gnumeric-buttons.png")
+img.save("taborder.png")
