@@ -29,7 +29,7 @@ def main():
     try:
         os.chdir("gen")
         for cmd in commands:
-            with SmartDisplay() as disp:
+            # with SmartDisplay() as disp:
                 logging.info("cmd: %s", cmd)
                 fname_base = cmd.replace(" ", "_")
                 fname = fname_base + ".txt"

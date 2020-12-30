@@ -48,7 +48,7 @@ from discogui.buttons import discover_buttons
 from discogui.draw import draw_indexed_rect_list
 from discogui.imgutil import autocrop
 
-with SmartDisplay(visible=0) as disp:
+with SmartDisplay(visible=False) as disp:
     with EasyProcess(["zenity", "--question"]):
         img = disp.waitgrab(timeout=60, autocrop=False)
         rectangles = discover_buttons()
@@ -66,6 +66,7 @@ img.save("taborder.png")
 Run it:
 ```console
 $ python3 -m discogui.examples.taborder
+[ScreenRect((425,413,510,447)), ScreenRect((514,413,599,447))]
 ```
 
 Image:
@@ -109,6 +110,7 @@ img.save("hover.png")
 Run it:
 ```console
 $ python3 -m discogui.examples.hover
+[ScreenRect((233,269,318,304)), ScreenRect((322,269,407,304))]
 ```
 
 
