@@ -11,7 +11,7 @@ from discogui.buttons import discover_buttons
 from discogui.draw import draw_indexed_rect_list
 from discogui.imgutil import autocrop
 
-with SmartDisplay(visible=1) as disp:
+with SmartDisplay(visible=False) as disp:
     with EasyProcess(["zenity", "--question"]):
         img = disp.waitgrab(timeout=60, autocrop=False)
         rectangles = discover_buttons()
