@@ -5,8 +5,8 @@ from easyprocess import EasyProcess
 
 py = sys.executable
 
-stdout_taborder = "[ScreenRect((425,415,510,445)), ScreenRect((514,415,599,445))]"
-stdout_hover = "[ScreenRect((233,271,318,302)), ScreenRect((322,271,407,302))]"
+stdout_taborder = "[ScreenRect((425,413,510,447)), ScreenRect((514,413,599,447))]"
+stdout_hover = "[ScreenRect((233,269,318,304)), ScreenRect((322,269,407,304))]"
 stdout_clickbutton = """1
 0"""
 
