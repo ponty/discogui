@@ -1,2 +1,2 @@
 $ python3 -m discogui.examples.taborder
-[ScreenRect((425,413,510,447)), ScreenRect((514,413,599,447))]
+[ScreenRect((426,415,508,445)), ScreenRect((515,415,597,445))]

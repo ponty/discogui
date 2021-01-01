@@ -1,2 +1,2 @@
 $ python3 -m discogui.examples.hover
-[ScreenRect((233,269,318,304)), ScreenRect((322,269,407,304))]
+[ScreenRect((234,270,317,302)), ScreenRect((323,270,406,302))]
