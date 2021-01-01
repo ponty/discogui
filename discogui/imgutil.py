@@ -148,11 +148,3 @@ def img_list_min(ls):
         diff = ImageChops.subtract(immin, im)
         immin = ImageChops.subtract(immin, diff)
     return immin
-
-
-# def img_list_min(ls): #max
-#     immin = ls[0]
-#     for im in ls[1:]:
-#         diff = ImageChops.subtract(im,immin)
-#         immin = ImageChops.add(immin, diff)
-#     return immin

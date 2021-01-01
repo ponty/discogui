@@ -64,7 +64,6 @@ def tab_rectangles():
             return []
         if len(ls):
             if len(boxes) == 2:
-                # TODO: implement almost_equal()
                 assert boxes[0] == ls[-1]
             if boxes[-1] in ls:
                 break
