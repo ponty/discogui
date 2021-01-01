@@ -5,8 +5,8 @@ from easyprocess import EasyProcess
 
 py = sys.executable
 
-stdout_taborder = "[ScreenRect((425,413,510,447)), ScreenRect((514,413,599,447))]"
-stdout_hover = "[ScreenRect((233,269,318,304)), ScreenRect((322,269,407,304))]"
+stdout_taborder = "[ScreenRect((4"
+stdout_hover = "[ScreenRect((2"
 stdout_clickbutton = """1
 0"""
 
@@ -15,7 +15,7 @@ def run_mod(mod, cwd, stdout=None):
     p = EasyProcess([py, "-m", mod], cwd=cwd).call()
     assert p.return_code == 0
     if stdout:
-        assert p.stdout == stdout
+        assert p.stdout.startswith(stdout)
 
 
 def test_examples():
