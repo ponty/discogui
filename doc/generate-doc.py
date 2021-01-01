@@ -1,10 +1,10 @@
 import glob
 import logging
 import os
+from pathlib import Path
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 commands = [
     "python3 -m discogui.examples.taborder",
@@ -21,26 +21,26 @@ def empty_dir(dir):
 
 @entrypoint
 def main():
-    gendir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen")
+    gendir = Path(__file__).absolute().parent / "gen"
     logging.info("gendir: %s", gendir)
-    os.makedirs(gendir, exist_ok=True)
+    gendir.mkdir(exist_ok=True)
     empty_dir(gendir)
     pls = []
     try:
         os.chdir("gen")
         for cmd in commands:
             # with SmartDisplay() as disp:
-                logging.info("cmd: %s", cmd)
-                fname_base = cmd.replace(" ", "_")
-                fname = fname_base + ".txt"
-                logging.info("cmd: %s", cmd)
-                print("file name: %s" % fname)
-                with open(fname, "w") as f:
-                    f.write("$ " + cmd + "\n")
-                    p = EasyProcess(cmd).call()
-                    f.write(p.stdout)
-                    f.write(p.stderr)
-                    pls += [p]
+            logging.info("cmd: %s", cmd)
+            fname_base = cmd.replace(" ", "_")
+            fname = fname_base + ".txt"
+            logging.info("cmd: %s", cmd)
+            print("file name: %s" % fname)
+            with open(fname, "w") as f:
+                f.write("$ " + cmd + "\n")
+                p = EasyProcess(cmd).call()
+                f.write(p.stdout)
+                f.write(p.stderr)
+                pls += [p]
     finally:
         os.chdir("..")
         for p in pls:

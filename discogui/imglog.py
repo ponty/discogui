@@ -1,8 +1,7 @@
 import logging
 from logging import DEBUG
-from tempfile import gettempdir, mkdtemp
-
 from pathlib import Path
+from tempfile import gettempdir, mkdtemp
 
 from discogui.draw import draw_indexed_rect_list
 
@@ -28,8 +27,7 @@ def img_log(im, text):
     global img_ind
     if not img_dir:
         root = Path(gettempdir()) / "img_log"
-        if not root.exists():
-            root.makedirs()
+        root.mkdir(exist_ok=True)
         img_dir = Path(mkdtemp(prefix="img_debug_", suffix="", dir=root))
     if CROP_RECT:
         im = im.crop(CROP_RECT)
