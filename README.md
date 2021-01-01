@@ -71,7 +71,7 @@ $ python3 -m discogui.examples.taborder
 
 Image:
 
-![](/doc/gen/taborder.png)
+![](doc/gen/taborder.png)
 
 
 button discovery on zenity using mouse hovering
@@ -116,7 +116,7 @@ $ python3 -m discogui.examples.hover
 
 Image:
 
-![](/doc/gen/hover.png)
+![](doc/gen/hover.png)
 
 button test
 -----------
