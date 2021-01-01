@@ -36,7 +36,6 @@ classifiers = [
 
 install_requires = [
     "pillow",
-    "path.py",
     "PyUserInput",
     "PyScreenshot",
     "easyprocess",

@@ -1,5 +1,4 @@
 pillow
-path.py
 PyUserInput
 PyScreenshot
 easyprocess

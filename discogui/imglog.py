@@ -2,7 +2,7 @@ import logging
 from logging import DEBUG
 from tempfile import gettempdir, mkdtemp
 
-from path import Path
+from pathlib import Path
 
 from discogui.draw import draw_indexed_rect_list
 
@@ -33,7 +33,7 @@ def img_log(im, text):
         img_dir = Path(mkdtemp(prefix="img_debug_", suffix="", dir=root))
     if CROP_RECT:
         im = im.crop(CROP_RECT)
-    fname = str(img_dir / str(img_ind) + "_" + text + ".png")
+    fname = str(img_dir / (str(img_ind) + "_" + text + ".png"))
     im.save(fname)
     log.debug("image was saved: " + fname)
     img_ind += 1
