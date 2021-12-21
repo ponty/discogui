@@ -2,8 +2,8 @@ import logging
 import time
 from time import sleep
 
-import pyscreenshot
-from PIL import ImageChops
+# import pyscreenshot
+from PIL import ImageChops, ImageGrab
 
 from discogui import imglog
 from discogui.imglog import img_log
@@ -74,7 +74,7 @@ def focus_wnd():
 
 
 def grab():
-    return pyscreenshot.grab(childprocess=True)
+    return ImageGrab.grab()
 
 
 def _grab_and_sleep(blink_time):
