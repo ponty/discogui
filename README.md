@@ -4,7 +4,7 @@ Links:
  * home: https://github.com/ponty/discogui
  * PYPI: https://pypi.python.org/pypi/discogui
 
-[![Build Status](https://travis-ci.org/ponty/discogui.svg?branch=master)](https://travis-ci.org/ponty/discogui)
+![workflow](https://github.com/ponty/discogui/actions/workflows/main.yml/badge.svg)
 
 Features:
  * python module
