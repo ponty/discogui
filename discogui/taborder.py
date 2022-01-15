@@ -79,8 +79,7 @@ def tab_rectangles():
 
 
 def tab_rect_pair(img_orig, im_next):
-    """
-    """
+    """ """
     img_diff = ImageChops.difference(img_orig, im_next)
     img_log(img_diff, "img_diff")
 
@@ -112,7 +111,7 @@ def tab_rect_pair(img_orig, im_next):
             color2 = sum(img_diff_filtered.getpixel(p2))
             ls += [int(bool(color1 + color2))]
 
-        if  0  not in ls:
+        if 0 not in ls:
             log.debug("split pos not found")
             return
         i = ls.index(0)

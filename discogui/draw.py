@@ -35,7 +35,13 @@ def draw_indexed_rect_list(im, lsrect, color="red"):
 
 def _test():
     im = Image.new("RGB", (522, 222), "grey")
-    x = draw_indexed_rect_list(im, [(1, 111, 111, 61), (221, 1, 111, 61),],)
+    x = draw_indexed_rect_list(
+        im,
+        [
+            (1, 111, 111, 61),
+            (221, 1, 111, 61),
+        ],
+    )
     x.save("rect.png")
 
 

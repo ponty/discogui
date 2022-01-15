@@ -22,6 +22,6 @@ def test_blink():
 
 def test_noblink():
     with SmartDisplay() as disp:
-        with EasyProcess(["zenity", "--info", "--text", "hi"]) :
+        with EasyProcess(["zenity", "--info", "--text", "hi"]):
             disp.waitgrab()
             assert grab_no_blink()
