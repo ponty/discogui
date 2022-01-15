@@ -8,7 +8,7 @@ from discogui.imgutil import grab_no_blink, img_eq
 
 def blink(sleep_time):
     with SmartDisplay() as disp:
-        with EasyProcess(["zenity", "--entry"]) as p:
+        with EasyProcess(["zenity", "--entry"]):
             disp.waitgrab()
             sleep(sleep_time)
             return grab_no_blink()
@@ -22,6 +22,6 @@ def test_blink():
 
 def test_noblink():
     with SmartDisplay() as disp:
-        with EasyProcess(["zenity", "--info", "--text", "hi"]) as p:
+        with EasyProcess(["zenity", "--info", "--text", "hi"]) :
             disp.waitgrab()
             assert grab_no_blink()
