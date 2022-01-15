@@ -12,7 +12,7 @@ import logging
 from time import sleep
 
 from PIL import ImageChops, ImageFilter, ImageStat
-from pykeyboard import PyKeyboard
+from pykeyboard import PyKeyboard  # type: ignore
 
 from discogui.imglog import img_log, img_log_rects
 from discogui.imgutil import focus_wnd, getbbox, grab

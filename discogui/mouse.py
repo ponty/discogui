@@ -1,6 +1,6 @@
 import sys
 
-import pymouse
+import pymouse  # type: ignore
 
 
 def PyMouse():
