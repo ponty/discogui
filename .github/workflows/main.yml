@@ -30,6 +30,7 @@ jobs:
     - name: Install Linux dependencies
       if: startsWith(matrix.os, 'ubuntu')
       run: |
+        sudo apt-get update
         sudo apt-get install -y xvfb zenity gnome-calculator gxmessage x11-utils
     - name: pip install
       run: |
