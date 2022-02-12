@@ -93,7 +93,7 @@ from discogui.draw import draw_indexed_rect_list
 from discogui.hover import active_rectangles
 from discogui.imgutil import autocrop
 
-with SmartDisplay(size=(640, 480), visible=0) as disp:
+with SmartDisplay(size=(640, 480), visible=False) as disp:
     with EasyProcess(["zenity", "--question"]):
         img = disp.waitgrab(timeout=60, autocrop=False)
         rectangles = active_rectangles()
