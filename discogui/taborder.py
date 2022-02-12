@@ -84,7 +84,8 @@ def tab_rect_pair(img_orig, im_next):
     img_log(img_diff, "img_diff")
 
     # can be dotted -> filter + enhance color
-    img_diff_filtered = img_diff.filter(ImageFilter.MaxFilter(5))
+    # Problem: close buttons -> filter value sohuld be low
+    img_diff_filtered = img_diff.filter(ImageFilter.MaxFilter(3))
     img_diff_filtered = img_diff_filtered.point(lambda x: 255 * bool(x))
     img_log(img_diff_filtered, "img_diff_filtered")
 
