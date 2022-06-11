@@ -27,4 +27,4 @@ sudo pip3 install -U tox
 
 # doc dependencies
 sudo apt-get install -y npm
-sudo npm install -g npx
+sudo npm install --global embedme
