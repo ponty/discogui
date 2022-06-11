@@ -66,7 +66,7 @@ img.save("taborder.png")
 Run it:
 ```console
 $ python3 -m discogui.examples.taborder
-[ScreenRect((426,415,508,445)), ScreenRect((515,415,597,445))]
+[ScreenRect((487,405,569,435)), ScreenRect((576,405,658,435))]
 ```
 
 Image:
@@ -110,7 +110,7 @@ img.save("hover.png")
 Run it:
 ```console
 $ python3 -m discogui.examples.hover
-[ScreenRect((234,270,317,302)), ScreenRect((323,270,406,302))]
+[ScreenRect((295,260,378,292)), ScreenRect((384,260,467,292))]
 ```
 
 
