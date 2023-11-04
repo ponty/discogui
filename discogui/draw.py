@@ -16,7 +16,7 @@ def draw_textrect(im, rect, text=None, color="red"):
     draw = ImageDraw.Draw(im)
     draw.rectangle(rect, outline=color, fill=None)
     if text:
-        rtext = ScreenRect(draw.textsize(text))
+        rtext = ScreenRect(draw.textbbox((0, 0), text))
         rtext.center = ScreenRect(rect).center
         draw.text(rtext.topleft, text, fill=color)
     return im
