@@ -7,6 +7,7 @@ def PyMouse():
     """
     wrapper, turn off print coming from Xlib.ext.randr
     """
+
     # Quick, turn off printing!
     class dummyStream:
         """dummyStream behaves like a stream but does nothing."""
