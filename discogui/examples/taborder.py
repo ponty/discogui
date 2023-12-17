@@ -1,8 +1,9 @@
 """
 1. start zenity Yes/No dialog on Xvfb
-2. discover buttons using tab order
-3. print rectangles
-4. draw red rectangles on screenshot
+2. discover buttons using tab order: 
+    send TAB keyboard events and check how the screen changes
+3. print button rectangle positions
+4. draw red rectangles for buttons on screenshot
 """
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
